@@ -4,10 +4,14 @@
         body { font-family: "Microsoft JhengHei", Arial, sans-serif; color: #222; }
         h1 { font-size: 20px; }
         h2 { font-size: 16px; margin-top: 28px; border-bottom: 2px solid #333; padding-bottom: 4px; }
+        h3 { font-size: 14px; margin-top: 16px; margin-bottom: 4px; color: #333; }
         table { border-collapse: collapse; width: 100%; margin-top: 8px; font-size: 13px; }
         th, td { border: 1px solid #ccc; padding: 6px 8px; text-align: right; }
         th { background-color: #333; color: #fff; }
         td:first-child, th:first-child { text-align: left; }
+        .news-list { margin: 0 0 12px 0; padding-left: 20px; font-size: 13px; }
+        .news-list li { margin-bottom: 4px; }
+        .news-meta { color: #888; font-size: 11px; }
         .note { color: #777; font-size: 12px; margin-top: 24px; }
     </style>
     
@@ -127,8 +131,9 @@
       <th>股票代號</th>
       <th>股票名稱</th>
       <th>目前股價</th>
-      <th>當日成交量(張)</th>
-      <th>5日均量(張)</th>
+      <th>當日成交量(千張)</th>
+      <th>5日均量(千張)</th>
+      <th>成交量變化(%)</th>
       <th>當日漲幅(%)</th>
       <th>近5日報酬(%)</th>
       <th>近20日報酬(%)</th>
@@ -138,6 +143,9 @@
       <th>本月營收年增率(%)</th>
       <th>上月營收年增率(%)</th>
       <th>營收資料月份</th>
+      <th>本季毛利率(%)</th>
+      <th>上季毛利率(%)</th>
+      <th>毛利率資料季度</th>
     </tr>
   </thead>
   <tbody>
@@ -145,8 +153,9 @@
       <td>1303</td>
       <td>南亞</td>
       <td>197.0</td>
-      <td>35663.0</td>
-      <td>41227.0</td>
+      <td>35.66</td>
+      <td>41.23</td>
+      <td>-13.51</td>
       <td>0.0</td>
       <td>18.32</td>
       <td>102.05</td>
@@ -156,13 +165,17 @@
       <td>31.35</td>
       <td>19.44</td>
       <td>2026/05</td>
+      <td>11.94</td>
+      <td>9.25</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>1326</td>
       <td>台化</td>
       <td>68.0</td>
-      <td>97647.0</td>
-      <td>78488.0</td>
+      <td>97.65</td>
+      <td>78.49</td>
+      <td>24.41</td>
       <td>0.0</td>
       <td>24.54</td>
       <td>39.49</td>
@@ -172,13 +185,17 @@
       <td>15.45</td>
       <td>28.23</td>
       <td>2026/05</td>
+      <td>7.74</td>
+      <td>4.05</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>1301</td>
       <td>台塑</td>
       <td>62.1</td>
-      <td>190059.0</td>
-      <td>145593.0</td>
+      <td>190.06</td>
+      <td>145.59</td>
+      <td>30.54</td>
       <td>0.0</td>
       <td>13.94</td>
       <td>35.44</td>
@@ -188,13 +205,17 @@
       <td>0.67</td>
       <td>13.31</td>
       <td>2026/05</td>
+      <td>3.70</td>
+      <td>2.38</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>1313</td>
       <td>聯成</td>
       <td>14.3</td>
-      <td>38851.0</td>
-      <td>28029.0</td>
+      <td>38.85</td>
+      <td>28.03</td>
+      <td>38.60</td>
       <td>0.0</td>
       <td>14.86</td>
       <td>31.19</td>
@@ -204,13 +225,17 @@
       <td>4.71</td>
       <td>5.52</td>
       <td>2026/05</td>
+      <td>6.21</td>
+      <td>1.59</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>1310</td>
       <td>台苯</td>
       <td>11.4</td>
-      <td>25051.0</td>
-      <td>19386.0</td>
+      <td>25.05</td>
+      <td>19.39</td>
+      <td>29.19</td>
       <td>0.0</td>
       <td>8.06</td>
       <td>30.43</td>
@@ -220,9 +245,22 @@
       <td>-38.61</td>
       <td>5.29</td>
       <td>2026/05</td>
+      <td>8.94</td>
+      <td>-7.37</td>
+      <td>2026-03-31</td>
     </tr>
   </tbody>
 </table>
+<h3>南亞(1303) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMivANBVV95cUxONmZfa3NBQWtZTzJSSlVSaDl2d1JNZm5LUHg0UmQ2RGg0Z3VQSi1kcmdFdEZ4VFZNQlBiSktjbC03b3B3VWh3UWlRNlRhYmxlOG41eDZRRDJMSkR3cFY2UTR1TU93OWZLTHlkSS1KSjdNSGNGSGpCczZVdHBZR25LZi1RbkN6V2RxZjg4SkFKRHU4Q2hKUDdfM3MtR3BoUjc2U2M1cl92MWNpbFliSVdqNTFvc0JVMU5USE1hcUxfcjhQR1RqbWltU1hUVTdBbE84TEZxMnhpUVlRSEZQbks1c1N1Mm9sM1FacHctMFh6SkJ4ZEdwWFlwZ09yTjZfcngxQUpMRXEyUmFtN09KVWY4ZHNwQVk2OFNHaUJPMEVUVVN1dGxSNVZSaXpIU0ZWd2FobFdnUWNjc21tZEFKTTFFUEpuc09sTXhnWWdpYktkUXNPUjVDTEg0OERQMEZfM20xdFAtVF9PeXZFbzB0RG91dC1fM0dZMXhJZ1pSa1BfMks2clhhRlBMVGcyQVMybmFyQ0EtTjB2OHE5dFBmODlDcEMzYmhlemNzN0gzbnU5QUM1a2NZc0RYc1JjV2o?oc=5' target='_blank'>目標價上看242元！「玻纖布大廠」明年EPS有望衝1股本 爭取M10材料通過輝達認證 - Yahoo股市</a><br><span class='news-meta'>Yahoo股市｜Fri, 03 Jul 2026 14:15:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiX0FVX3lxTE10eC01eC0tZVFyT2hIQVRZeTZHUGYwcVBZc2VPanl1VkVGc0NyaUwwNXNGTWR5MDFtRXZXckRxbXRkemlNdWZVZVpIZmJNczBTQUdaams1eGtBR2JSRmlv?oc=5' target='_blank'>南亞 Q3營收超有戲- 日報 - 工商時報</a><br><span class='news-meta'>工商時報｜Sat, 04 Jul 2026 19:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxPSzQ2Z2dtemRSdXRQdUtlc3BYZ05mdmRQQjVFbG5uaGhGWmw1c1BWdTVTVnZCMWhibHkwZXVQREFuUDVsemZtSTJSaUdhUjJJeXUyc3huczN3cngwX2JpcnFFbXRUUHFmdkY4U0h1d1Q1WWxfcjkzQ3libW1vVVdCOV9FVVYxSFdENUVwVmp3?oc=5' target='_blank'>【10:50 即時新聞】南亞(1303)亮燈漲停183元，AI電子材料漲價題材帶動買盤追價＋多頭均線結構配合法人連買與主力積極佈局 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Wed, 01 Jul 2026 02:51:37 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMi_ANBVV95cUxPMG9NR1VCQ1RFeU5KTkNMaDdMYmlmZ0dDSFpGY1hiYzdYeV9WNE1TZVRzVGZocndqelhYT0NTSWlrWlFlcFpkY0Jvcm9QU0syZjEtTF81OFkyM055TGp1S0d3SlAzZVhlZXFxSlJTaC1EbWx1SEd3WVhfdGNzMkNIUmh1Tnh0c2hLSGtkSlZsaU1DZDIyYk9NMklZSnZSTTI2cnZHeW5fN01hd3FWVWY5dWU4Q1NEZzJQU2JnUEEtRW5RZHFtR0RyQWFKVEFHbXAwMDRhdmJ4ZEdfLWFWTm1XTFdxUmdjRzlrdDZHd01ScWZHMkg5enNqQzdaaHB2MU1IUG91aHEtQzNmN1hMWHpENld3bFVsdFRtLTRkQkl2UXZZczFsT2t3dmNhNi02TmpBR25SdUljNzhDMWszaTZpemtJdGNza3dHbjZZeUVjejRxdU9xQUZ1bnhCT3FXaFgxR2FnbkZScWt2QTBja3lpcXFaSGE1VmYyQWNwYU9kc3NXQWFSME1vbjlrc1ZCZDdFSW5zYkg2dkM5Uk8wTzJfZEhhMDJReWpqNkRsT2NHelZrNTAyUmJhQ0pzUGluRklFOVpfeGJNeWFVMDN3UE5GZWVXTzg1QXhCSG1ZYWV1X0M5NWpYYmd2RENnR3BOU2pRU3NTOEZwaHo0OVJs?oc=5' target='_blank'>今日漲停股｜半導體材料與被動元件雙引擎齊發，中美晶、南亞、盟立領軍強攻0701｜豐雲學堂2026 年 07 月 - sinotrade.com.tw</a><br><span class='news-meta'>sinotrade.com.tw｜Wed, 01 Jul 2026 08:00:51 GMT</span></li></ul>
+<h3>台化(1326) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMigAFBVV95cUxOTWZaYlAtaFRVd1ZuSFBBZldRSUg1TEp6SXVyMmtLM1BmQkJGRnNGaDRCWHN3MlB0cTA3VjlVamJiR2NiMG5TNHN2R2o5U3MwTk5vOXdRcTdhNnAtb2ZUMkxtbGppNUpGTGc4cUdCc29OODloZ01yWDFmWG9xajZRRw?oc=5' target='_blank'>台化(1326)亮燈漲停，群創、聯電還能追？杜金龍：我頭殼沒壞掉當然不賣！這檔「便當股」股價很容易就噴出去了 - 今周刊</a><br><span class='news-meta'>今周刊｜Fri, 03 Jul 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiT0FVX3lxTFBFYjZfd0docXkwLXcxdzhYOHYzVTlCTUNyUFU3Yl9NV1gxbWcyY1Q4MXFhNlZ3S3h5cUhWOEhWdmVyQjFaWFBEMFRpNElfX2c?oc=5' target='_blank'>〈焦點股〉台塑集團、塑化族群逆勢上揚 台塑、台化連袂點燈漲停 - news.cnyes.com</a><br><span class='news-meta'>news.cnyes.com｜Thu, 02 Jul 2026 05:34:07 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiiwNBVV95cUxNaUhpb1VPWHlqSUp0RDNNOHRzODFzQmNreXFsUDBWaG92TzdqZmtSNkVjNXZKUWw2NHRlaHhGd0lZOENvMnRhMWU5SjQ4LUlUczBnaWlYenFVRDY2UEl6SDIzVjJ5ZDkzaEltMFpoaGxNNE1rekxhOFFuVzd3UHpuRmlobldjVkxvcXJRYjloUF9uakF3VHlncjNab1EzcUxlYUh6T2ZiamNYZ3JYU1dmLXJzVDFRczMzbVVKYmVsX29XTHRnZjNudUM0ZGI1akR0ajRsRWh3N0pyMElURmZldlp5ampaZzFsWmZyaEwtLTVIODNMOGJ5TDlUOVhHUEFGRGtDYjlTaDVFTEdLajFxUTZrc2JrV1c3c1ViRllSTXdoTndBVDJhXy1QcmVRQVJKUWdHSUtzaEFNbE1GRnpqeUxQYUh0VW9zVVg2ekFmN2tOY0JnZGFySjExWUI4dXZOU0tQM0xGUFBFMmswLWtkZzFxZE5zM2tEQ25LOG1ITVBZS085dlZZa1Vxcw?oc=5' target='_blank'>〈熱門股〉外資連3買力捧轉機題材 台化周漲25.46%股價創近3年新高 - Yahoo 財經</a><br><span class='news-meta'>Yahoo 財經｜Sun, 05 Jul 2026 04:33:59 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiX0FVX3lxTE9yQ0V4NlFIbHNTaEhidURDV1I4UkFRR3dESmxQaHM1dEhWb0VpMlQ0eWtWVGNtcGEzMXZyVHFuTy1pX3hZUjdodFN2SUhQWEJoM1k4R1EtTHN5VE1OYm130gFkQVVfeXFMT1NWa0pvQU84OE1pcVdsYl9WUTR4N0NRVE1rYnFCa1l5ZldkX0hoT0NYUkZObTlpLW1sT2VsdkhxSTFBZlNLeHNxQzRYcDdfZmlPaU5OMV83WW83cU5xQjQ4bFlSSQ?oc=5' target='_blank'>焦點股》台化：電子級氫氣後市看俏 直衝漲停 - 自由財經</a><br><span class='news-meta'>自由財經｜Thu, 02 Jul 2026 03:32:22 GMT</span></li></ul>
+<h3>台塑(1301) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTFBxOWNYcnpGZG80MlNMSUxzTl8tOXk0cUdOTmMzbVhGX1BUeHVGWG1zaWVDTHJXLTk4M2lzeGlrYVBfQ2NZSWJkeTN4WWRBcXdVZnlXUTEzNXI?oc=5' target='_blank'>1301 台塑- 昨天經營之神託夢- 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Sun, 05 Jul 2026 00:56:41 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiugNBVV95cUxNdC00Unp4dC03VGlqNUVORWp2UXpPR244ZmdZYmhobzN3NkhkcGE1eXotUjREcDNFSXRjWEhIam9IZWxXWjVPN3FFbGZzWkJTaTVDVDVkR3B5UkF4SG00REM5WW1XOXJGam9FNzBnOXVLeWZ4S2JuNG83THFSVnVVSkpVWFVSRXhJdGxJZXlVU2p3RUxxQXpWb3FoWmh4aFJab3JCMFZSU2JBU1RqYUphWjZsVWdqYjhXSXZSdG1ZckYxc2tlR05jQTVMX0FzSG9yTmFsRF9DX0cwdHp5YWNPRkxRUERYdG01dWF5SlNtdE9fSlBnWndBSDZ5b2dsaWxpYk9mSS1NUWRWTDRYTFNmSTJhQzF5cXRYVUdBeUNkZ3ZCMGxtTkNTRkhOX2tjQmlnMm4taHN0M3JXalhuNnExVnUteE5BT1hQbjA2dG5YQ3M1QW5EakdhYjBMWTlXelpvR3ZYT2tJcnphdnRGZ09HSmZURnlCSDh3XzNBbVQzLUZCQWY0R0NBcVBIZVRZcmFyVUhXLWY4YnVlRUYtalYwdkZ6UHBlX3V5ODMzZW5kTWhBVzFxWmpfTkVB?oc=5' target='_blank'>台塑三寶爆衝！台化亮燈漲停攜8檔塑化股同歡 分析師：短線不追高 - Yahoo股市</a><br><span class='news-meta'>Yahoo股市｜Fri, 03 Jul 2026 02:58:55 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMihwRBVV95cUxQWWhKYUJlTUZDXzJPT3dKeEFrRGdxbWhLOWVsTnBUUTIwYmszUGI2RnF1ZjRkWWV1SEExajM1cnJQNUxKZi0zVnN3U3dqd25kMWNBSDJSZ294bzQzUHVFenJYX3BNaHJVSTBlZHV0Y1RncnV2dHZ1d0tQaXZoUjg4cmRCdHFBNWMtVFJUa0paUTRrYkxzNkZjNnlGMkY0SFdwdDNYQ1JaaEZwQ2E2NFNVQmttcDUybUpfOWF2UjJIMEIxUjIxREJTUjFQaWJUZUZlZ2pwOFBnbTlwSXV1aTVYUElHdFlac19zRmVXb2tkVF9rczlvN2lDVGk4YW16bUltVkVQTFl0YThvWVhpSDQzWWY4Zk84OEFFOWM5SS1SdWhmRWxSQjZYRDBrYkUxZk1aSFBtQUV6MDB6cExhS0xadXZ4dExrR3VLWGJBcmlfRkdOdzJLRTV1WkFXUnozWDV4UUk4T05NZ3E5WGlNTnl4ZHlTNTBvQ2ZsazBXU0c0NkM1ZG5PUGhEamJtSG9qS1F4MWtPZkk4T085MDNTbGpqNksydkhlMHNid2NERjZnWUNobEFVOGpheWUzZlBPMW9HWTNCTS1pd3BZNFozU0xnSUJpWEttN0pfNWVHSlBscGtXVDNYVzB1MGhGcFJ5a1NGT1RIX1RhaElnLVFOajBMNFp0RzkxZ0U?oc=5' target='_blank'>今日漲停股｜台股震盪下跌274.8點，台塑、台化、合晶、新纖等傳產與AI材料股強勢漲停0702｜豐雲學堂2026 年 07 月 - sinotrade.com.tw</a><br><span class='news-meta'>sinotrade.com.tw｜Thu, 02 Jul 2026 19:56:18 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiS0FVX3lxTE1RMWlKZU91VjZPNXIyNVZiNExDdlp0U0NWVWt5M2d6SmRLWnBLQjloV1B5bGpSVDAzb2NqdHY5bkx2S1MwUVZ4cjNtZw?oc=5' target='_blank'>傳產旺季點火！ 台塑三寶股價爆衝「這檔」噴漲停 - 三立新聞網SETN.com</a><br><span class='news-meta'>三立新聞網SETN.com｜Sat, 04 Jul 2026 11:15:31 GMT</span></li></ul>
+<h3>聯成(1313) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxQYUw1U0dGVU04bXdQNk44YnZFdHIyR0lkLTRCWWlKUXJ6TGlYb3pSV1VHZU9xb3N3NmcxN21aQ3gtZHhjYjJ1aVpxaW1HNmdsWE9odnpLMy01T1ZxMzVoWGR2YWtpYkxMcV9jb0hYcjNqZ1BSS2VyR2pqRWY0TDduQ2xjelY2TklGSXJybkN3?oc=5' target='_blank'>【10:55 即時新聞】聯成(1313)亮燈漲停14.3元，受塑化族群成本壓力舒緩題材激勵＋法人及主力近期同步回補推升多頭格局 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Fri, 03 Jul 2026 02:55:54 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTE1sUzg5ZXg5Ry1ZbHFqYkdNRF9pY0U3ZktGOGZoWmg0VlFfR0ZJY3RHd1FyUmJPSHlhc042OTAyTUM2cjF2ZHpCNTlqMHhidnVfT2I3OVRUcGt3WERtRzc5Sm1FVTA?oc=5' target='_blank'>討論牆 | 盤中速報 - 聯成(1313)股價拉至漲停，漲停價14.3元，成交27,644張 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Sat, 04 Jul 2026 18:45:06 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiXkFVX3lxTE1HQU5CVXZ3TmNuVTU2dklCLVhnSVVqbXJBV3BpU3hxbVhsbElNZjRTb1RPbml5UWVzdkhmbDZnWDRvbGo4all2ME1OSVZwcmRhcnAtRFJ1UTBGSGl2LVHSAWNBVV95cUxQSVRlcW5nWEZBT2RJODRoQ01FSG9LYjZuNUE0UTBnYXFncGl5RDJVODdEaldPdmFmRG4zazQ5RFpTODg2RzYwRU5TTm1fUTlNLVo5V2lGN2R2LXBNYTEzYlZhbjg?oc=5' target='_blank'>(1313) 聯成化學科技法說會 2026/05、聯成化科財報、聯成化科展望、聯成化科財報投資亮點｜理柴知道:法說最速報! - 方格子 - Vocus</a><br><span class='news-meta'>Vocus｜Mon, 08 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE9MREdnYU9EQ0ktVkJ0WWRvb3B0ODFnSlMyX2hOX1dVVkk2RnJKZWRTbUQ0YklJUE9IYkg3cVdXM2JnNXNVZUY1VW1KU1lNSEZyeVNUVnItWUQ?oc=5' target='_blank'>1313 聯成- 油價下跌刺激塑化股表現- 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Thu, 02 Jul 2026 22:19:13 GMT</span></li></ul>
+<h3>台苯(1310) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiWkFVX3lxTE9mNmZPa3lzZFV6X1lrSF8xdEpGTXVUamRlTWxrampWMml3YVpJSkRINzBXN0FqVUY2ZjQzY3R3bk10dkNaYjg1bUtOWGhiWk9IMjJSaUo3Rmpad9IBX0FVX3lxTE9OU3pNNGhTNkc1WlN2XzY1bXI5a0RUS29qaFhMdkRhSTJpRWtSbkxkZXJ6czFQbU9XclFFVU1aemQ1dnk0cnBnb0tKdzNqTTQzNm55VnpaWDg4RjBxc2hn?oc=5' target='_blank'>台苯、國喬轉型 邁大步 - 經濟日報</a><br><span class='news-meta'>經濟日報｜Wed, 17 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxPWUdDQm9maElzdzk5UDRDVTlSTFRIeXIyVkNvbllTbUpZOHlzZTZUbGREb2k5NURSQjZjU2JTTlFqTlNDQV9aampFbVh4THFjamp1bjFTMEdUNDh3ZlVkS1RSWEQ2MnJwUEtoMXBhLUhyMFA1bDJKRW1ucDZEbTVycjZkSmxTei1PU2lQc1ZB?oc=5' target='_blank'>【13:18 即時新聞】臺苯(1310)股價勁揚至11.4元、漲幅9.62%，受塑化族群成本壓力緩解題材帶動＋外資與主力連續買超推升多頭結構 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Fri, 03 Jul 2026 05:19:17 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTE5ieWU3U0VNWXhPbkNITUZ3WEVTeDFiQk5abDBfaTBqZ2VHMGFOUnVqLVpFYXFBNEhRUFRucnBWN3QyMDBnV2VRLUs2R1dFYXNMbmExSHlwUG1wb0JEbDVOckRHeE8?oc=5' target='_blank'>討論牆 | 盤中速報 - 台苯(1310)急拉3.65%報11.35元，成交7,514張 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Sat, 04 Jul 2026 08:02:42 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1YZUVhSFV3Rngya1hYU0ZjUnFMLXV3WmhTR2ZTOTZXR3RJVmJyc2laekVjSEdPV1ZaRXN4MDJpc2JrZzFzLUlsOVhxMW84ODQ3SzFITEEwRjd1TF9aMWZSMXJfcVJCMjQ?oc=5' target='_blank'>【13:08 即時新聞】臺苯(1310)股價走強漲逾5%，受SM報價想像帶動買盤迴流＋短線突破12元關卡技術面轉多 - CMoney</a><br><span class='news-meta'>CMoney｜Fri, 20 Mar 2026 07:00:00 GMT</span></li></ul>
 <h2>【半導體業】內部領漲個股</h2>
 <table border="1" class="dataframe">
   <thead>
@@ -230,8 +268,9 @@
       <th>股票代號</th>
       <th>股票名稱</th>
       <th>目前股價</th>
-      <th>當日成交量(張)</th>
-      <th>5日均量(張)</th>
+      <th>當日成交量(千張)</th>
+      <th>5日均量(千張)</th>
+      <th>成交量變化(%)</th>
       <th>當日漲幅(%)</th>
       <th>近5日報酬(%)</th>
       <th>近20日報酬(%)</th>
@@ -241,6 +280,9 @@
       <th>本月營收年增率(%)</th>
       <th>上月營收年增率(%)</th>
       <th>營收資料月份</th>
+      <th>本季毛利率(%)</th>
+      <th>上季毛利率(%)</th>
+      <th>毛利率資料季度</th>
     </tr>
   </thead>
   <tbody>
@@ -248,8 +290,9 @@
       <td>8261</td>
       <td>富鼎</td>
       <td>320.0</td>
-      <td>35099.0</td>
-      <td>29448.0</td>
+      <td>35.10</td>
+      <td>29.45</td>
+      <td>19.19</td>
       <td>0.0</td>
       <td>18.30</td>
       <td>105.13</td>
@@ -259,13 +302,17 @@
       <td>1.15</td>
       <td>5.26</td>
       <td>2026/05</td>
+      <td>38.07</td>
+      <td>37.89</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>3532</td>
       <td>台勝科</td>
       <td>440.0</td>
-      <td>993.0</td>
-      <td>1235.0</td>
+      <td>0.99</td>
+      <td>1.23</td>
+      <td>-19.51</td>
       <td>0.0</td>
       <td>20.88</td>
       <td>68.58</td>
@@ -275,13 +322,17 @@
       <td>24.43</td>
       <td>14.03</td>
       <td>2026/05</td>
+      <td>0.83</td>
+      <td>11.65</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>6573</td>
       <td>虹揚-KY</td>
       <td>25.1</td>
-      <td>3036.0</td>
-      <td>2573.0</td>
+      <td>3.04</td>
+      <td>2.57</td>
+      <td>18.29</td>
       <td>0.0</td>
       <td>15.67</td>
       <td>66.78</td>
@@ -291,13 +342,17 @@
       <td>-9.78</td>
       <td>-19.64</td>
       <td>2026/05</td>
+      <td>11.07</td>
+      <td>19.99</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>2342</td>
       <td>茂矽</td>
       <td>58.3</td>
-      <td>3549.0</td>
-      <td>3014.0</td>
+      <td>3.55</td>
+      <td>3.01</td>
+      <td>17.94</td>
       <td>0.0</td>
       <td>3.00</td>
       <td>49.87</td>
@@ -307,13 +362,17 @@
       <td>-3.47</td>
       <td>-3.46</td>
       <td>2026/05</td>
+      <td>15.86</td>
+      <td>9.49</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>2481</td>
       <td>強茂</td>
       <td>207.0</td>
-      <td>7754.0</td>
-      <td>8713.0</td>
+      <td>7.75</td>
+      <td>8.71</td>
+      <td>-11.02</td>
       <td>0.0</td>
       <td>13.42</td>
       <td>39.39</td>
@@ -323,9 +382,22 @@
       <td>13.66</td>
       <td>8.76</td>
       <td>2026/05</td>
+      <td>32.74</td>
+      <td>32.67</td>
+      <td>2026-03-31</td>
     </tr>
   </tbody>
 </table>
+<h3>富鼎(8261) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMihwFBVV95cUxPakVtZVFNMi1Ob0hpYXBWVFlCcEVPWVZaRllrR2duVlU3VVJEaG1zWDN6cXlJM3J0M2lYQ3FaWFVzT3pjbnZ5MUhKejlyQUEzTjVOdTR3RHptMk1jYldpUkVTUGo4REdvcC1yOVhWOHlIYmNfNjFuaWpzUW43bEtUU3NNbzUxTlk?oc=5' target='_blank'>富鼎(8261)漲停後，真正支撐股價的不是題材而是什麼？-黃勢明 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Thu, 02 Jul 2026 02:41:11 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE5iQTVIeEhibHJVa0xfalNnUFFUa2JOSGZmejZ0eU9wbGxYR3NrYldJeHBNQ1ZRYXBvTE14bWxLSGozdEVTUnNpT3JJaVpMN0J2bGUyb1hEb0g?oc=5' target='_blank'>8261 富鼎- 第二戰線正式掀開，富鼎、台半、強茂、嘉晶誰能一路撐到2027 - 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Mon, 29 Jun 2026 23:41:45 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTE9YY2RodWxGbzZ3N2pxYmhWS1Z4N0NJS1JQOE1wYlpHT1FMcWgwY0RkT1J6bVRVcExrM2c0YnFYMVNhTXVPMmtqS3g4ZHNGc21hVVVXRTZ0MFRQMVJ3R0xzV01DSFA?oc=5' target='_blank'>討論牆 | 盤中速報 - 富鼎(8261)大漲7.03%，報350元 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Sat, 04 Jul 2026 12:40:37 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiiwVBVV95cUxQWm5VdjVYTWNfZm1uNlVVZ29UTFpOS1RXUGpOYzJsdExJTDYwTVFuS3VCaGVGMENzS3hnaDJaYVBDaVdzUnRRaXVvR2VKS0Q3QlZHVTJDcG9ZRmVFZGJwMEtYM0pjZkVwMTVlQ25aZGJPVWFuWkZBV3ZoSFk4MUF6aWxJZ0QxMEhFdVlVcFNVZWZFN1lWMDh1Wmo2TlZabGNRdFQ2bnhjTkwwLUlpck9OZXJrQ05YNy15Mk5tVnJRQjBia0xMZHdqMEJwMXpjMHFZcVFoYTh0cXI2bXg5SGpkaS1iX3JTUXYtQ3NRYnhEbFl0Tjg0YjY3LXlwekltdDZGdGhHYVBuVGhuYnBVRmJXSEdYYThlamdMcmVtTnpDZFN2eGpnVnZoRFVTMGhBdzJiMnd0Vm15WmwxTzVud1JVUkxRcTFxZXZnZE1OUEk1VFNLb1hSQ1VDbmlkeGZVSVJEdElUX294cTl0bWNFakFWUmJMNEc4eGRDdWR3NjYwdmRhRWY1eWJUNTQ4Y1ZGaHFNVHBVSF84Sk8xeWkxSmV4OTlYdnllUEtkX0tlM3h2S2ZnMFRiU2NjOGlKa1Fnenc0RzI3STM4ZFY5SGhRWHpwd2RNeWd3OHh5bnRJMzlwMnVmTlV3MEQ1aEJuZ1hkU21jQmdSZjdsd3d0a2QxWVlpeTlBQkstU1IxZUk1MUN2czBMdE15c21nYVVVYXg0cFJKdUc1Q1RZWkladVU5b0pZd0FWanpJbGF4SVR1b0xzZHEtWUFhb1cyeVlqaERwUngwLW94MmpSY0Naa0lSdGJuVHhCWVFvUTNQRi1kWm5VQzEyWDhfZVZqN3N2ZnhLazJqSEMzQnhwNjA5Y2c?oc=5' target='_blank'>【0624台股盤前】韓股熔斷影響台股創高後急墜640 點，功率半導體與光通訊強勢抗，【RS動能排行】:富鼎8261、鼎元2426 、台半5425｜豐雲學堂2026 年 07 月 - sinotrade.com.tw</a><br><span class='news-meta'>sinotrade.com.tw｜Tue, 30 Jun 2026 07:00:00 GMT</span></li></ul>
+<h3>台勝科(3532) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMi1wJBVV95cUxNd21leUJLaEdUV3lNUllsaGJySy1fZExvdGh6SzdhRm9qNktleFF4ejBvSy1uVXVxeTg5cV9uNTFqNGtPYl9QTENVNDIxZmdjTEs0anBpV3ViYklFZjExX3RIZ183X2JlODllU1ZHb1JRdVNpcE9zcmlsVzM0N0I0azNFWFlxaTJ0elJaWGNXQ0NxeXpJVzg2anBDZmVqR3RjQmNtaVYycFhoaXFRY0lpQ2hlRHhCNHd3X01GNTNRNnNJRkR3Wng0RmhnNnJScFZkT0lWeWNoZE43WUhPa1ktU3BqS2JGeVFKbUk4Um5KcUhES0s3VUo4bHBxYktselA3MllMclpacDFXSG96dUF5cUl2YmxDUWRYM0F5M3ptMVNTVkY5QVpOSlhIWXlSbkIxT1hjYVUyTzVsSG9OQmo1LW1ySFhOemNtTkRYLVVlTE5FRVdtQk1J?oc=5' target='_blank'>矽晶圓大爆發！「這檔」5月獲利狂噴1199%跳空漲停 台勝科、中美晶、合晶都亮燈 - Yahoo股市</a><br><span class='news-meta'>Yahoo股市｜Wed, 01 Jul 2026 08:30:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiVkFVX3lxTE5QbFNWWnRhWk1pSEdlTGZjN3FGYWZnOEU3YVg2Y0hyUU9xa3dZOVpGSmNYcWpXTEpnc2tRR19lTFFxLTVNRG0yRm9pTXRXVWxRTTdfSTV30gFbQVVfeXFMTnpGUmw5WGp0c3Y3aUNkTWZRTG1ka01iYld0YnVUa3NYbjdmNVJWZ0VzSk9VNUlPY2lZNDlUM2hKOHFhbC1nN2plWndWYzVYNmJLX3hQRnQ5LVZKOA?oc=5' target='_blank'>漲價有望＋需求回溫 台勝科、嘉晶下半年展望樂觀 - 自由財經</a><br><span class='news-meta'>自由財經｜Fri, 12 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMigAFBVV95cUxOVlF2Ty1MSDJQaXFxU1BpNlpEOFI2WExnRml2ckFvZnJyVGZmaEJ1M0Zta3pHUHJBY3hKNDE2Y3E1bnJIQndwb1NDQ3JSRE9FTzhqQkliNUFXRmtKd1NCUm5jT3ZTYW0yU0lROWRkTnpaeGUxNGp5Y3NZU0YzM3BSLQ?oc=5' target='_blank'>台勝科(2532)做什麼的？是台塑子公司？今年股價翻3倍！中美晶、合晶、環球晶...矽晶圓下半年還能大暴漲？ - 今周刊</a><br><span class='news-meta'>今周刊｜Tue, 23 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiakFVX3lxTE9WN0NxakhrZmtvSEZHSWpGZkhJdzhsTVkxWm1zdHVMTlZrRUlNVk5IVm5FY3BZbXg1MGl1bTdMdThVOFRBem5WN0tNU01MRFgyaHVqUGw1V1JucjhWcmZ1NmVvRWtNeE14OHc?oc=5' target='_blank'>跟進記憶體、MLCC！矽晶圓超級循環也來了 環球晶、合晶、台勝科、嘉晶、中美晶...法人首選曝光：目標價直衝1500元 - 旺得富理財網</a><br><span class='news-meta'>旺得富理財網｜Wed, 01 Jul 2026 00:49:42 GMT</span></li></ul>
+<h3>虹揚-KY(6573) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxQR2F4UGpmQlAxRVNsUUdFRmMwVjNkWFFBMWNLRnJINm9PV2FtbTRoTDVVc2dVQjBmNkRUS2xQVVlvLVpIRFh3TmlPU2QyaXN1MnBYMHA4M0YxTnlIc0x3bWdXc1NLb1ZEQlJ3dnoyeS1TUkRkcldRQ05LcW9ZZVJfbWNVTDdXY3lKaUZEck9n?oc=5' target='_blank'>【09:23 即時新聞】虹揚-KY(6573)亮燈漲停25.4元，AI電源與功率保護題材加持＋短線主力與外資買盤急拉偏熱 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Fri, 03 Jul 2026 01:23:22 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTE1nX19iSlZ5TkpRLXF2dlhycGRlbGhZbzA2Zml4aF9ZYzhpaHBzMF9WeHFJS3NnNTM0d0h2OXVlSUdVa2xBWTlxVHF3RFNKVm5Qa0ZLWUhaVHpna3U4bFQwdjRlVDE?oc=5' target='_blank'>討論牆 | 盤中速報 - 虹揚-KY(6573)股價拉至漲停，漲停價23.1元，成交1,278張 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Sat, 04 Jul 2026 11:09:05 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZkFVX3lxTE82NWdoZGx4U2EtRFN4ZTRzaUxSWWxPYU5ndmY0c0E3TnJXSE1GZEJqY2txUUZvb3kyZmNPRzJpZHNkZFl1MjlNWWUxRVRxOUxEeWs5b1RTcEVrUkpxRGdXbFpEemdGZw?oc=5' target='_blank'>【12:11 即時新聞】虹揚-KY(6573)亮燈漲停，AI電源與靜電保護題材加持＋短線價量結構轉強 - CMoney</a><br><span class='news-meta'>CMoney｜Tue, 30 Jun 2026 04:12:38 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMizwFBVV95cUxNSTlsZXJtYkZJenc1aTZQTURBblczaTNwMmNFZFdPY2R0UkRyN2xPTVp6V0JnWmJBQlRXeUtYUHhhSXIyS2hYWUEzUzliV3BuMWx2aXNNcndxMWU4ZjV2ZGhnMXRzOFdFaW03WWI2bHdVSERDbHdTbzJQT055eFNwUEJONzlURmxYSERIOVhEd3FDRkNwUU5peHEtdEkyMG92dno4eTRPMjZkdi10ZmxsWkFhOWR0VWRiRWgyZzFacE1aaGdyaUdiZkVIU2RidTQ?oc=5' target='_blank'>20元以下、EPS大反轉！虹揚-KY（6573）是這波被忽略的轉機股？ - Yahoo股市</a><br><span class='news-meta'>Yahoo股市｜Fri, 05 Dec 2025 08:00:00 GMT</span></li></ul>
+<h3>茂矽(2342) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTFBaYVptUktvT0tIOW5PWnk5c1MtZ3hmZWQ4SUVIZHBSaWlia2Jjc3U5THdZZllXRDhuT2VtNC1faUMxSUlUVDN4RVV1YjVsODFxeS1iS2ZOQmY?oc=5' target='_blank'>【即時新聞】茂矽(2342)飆近3成創四年高！這「3檔概念股」大單湧入接棒上攻？ - CMoney</a><br><span class='news-meta'>CMoney｜Wed, 24 Jun 2026 00:24:09 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMi-gJBVV95cUxQX205R25XNy1YMkg5c3Z4bGt2Y09sMmQ5Y2l1bEhzb0xoRklEUDQ1NWxPVTVjZDBwZ1RQNENha1RDMG5CdHJraHI2cU1CNXVHSkV1ajl2aXdtRVd6cU9zRTR0XzItdlNzaGVOWFVBcXhQdkhTeUxjWjdhSTlGNzljbVlTZGIzMG9GbG11cWltLWxoNnBVT2JmMEhhVlN2V2drN3lNb0pOOW0yY2xZckhoRjFYUW01QzN0OHVFTVN6YmVpMkRja3FFWlQ2WGJtaWdkWUdCeTgwY2ZZZ0Z6YV9qejBURGY4U1Z1S25sc3dldkQtWlRtc1BVQ0NPM241YzFkM1hYcWJGd3FZSkNLNU1PbHNGbVdrakU0LUktazQwZk9Hb1lYZ0tOOU9uRUF1Nmg2M1VrcFk1aGg5d2pGOHk5NGM1aDlZSlZGa1lxalNpUkR1UXFVUkJmdWRYRm1MWFVWaHRXa2NrekpKUWNtNzJvTjY1N2dVTWx2Mmc?oc=5' target='_blank'>5月營收連3月月增 法人看好茂矽今年EPS有望成功轉虧為盈！ - 台灣好新聞</a><br><span class='news-meta'>台灣好新聞｜Sat, 04 Jul 2026 07:31:18 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE93el9LTUc2aHEyNW1hVTF5MTZkdWhhbnhXUGJaYVVOQUdvRm90TEEwbHphd0FITEhtc1hoczQ3aXVOVXROeXpPcTVaQ0daNEZlSDdwSlBoY04?oc=5' target='_blank'>聯電、茂矽與客戶協商調漲代工價 起漲時間不一 - 自由時報</a><br><span class='news-meta'>自由時報｜Sun, 21 Jun 2026 16:52:05 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMib0FVX3lxTFBrSUVKYzA0Q05zenBDeHUzd2xoVTRUM0Z6RzVkTzVaRWtva2ZFNVVTbHpsYkNRRU5nLXhjY2JOaDJsUjByMjNGOF82end6aXZZT19RYjVjV2dQUWExM1ExTU5FamNBdVRmS2pZUnpJOA?oc=5' target='_blank'>虧損照樣鎖漲停！茂矽飆破52週新高 揭密「SiC＋AI電源」 背後瘋狂當沖與轉機真相 - 理財周刊</a><br><span class='news-meta'>理財周刊｜Tue, 16 Jun 2026 07:00:00 GMT</span></li></ul>
+<h3>強茂(2481) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiVkFVX3lxTFBvMEEzd0p0ZDJJZ0l5dUdMbXRxYVBtdEw5Mng0SXNScUQ4Wm00QUdGeGdxYnVFY2pvSlZYcWFJUm1rR2JkTklIZW1wTXpTc01vTldlN1lR?oc=5' target='_blank'>強茂(2481-TW)、德微(3675-TW)、台半(5425-TW)三家台廠功率半導體IDM月營收怎麼不同步，原來不是都只受惠轉單效應 - 優分析UAnalyze</a><br><span class='news-meta'>優分析UAnalyze｜Thu, 02 Jul 2026 03:01:48 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTFAydkNyVDBzXzE4aDNKT3lPM0piWGlPeDkxZGc5NDVvX1JLYkJRb0x6c0JZdFBjVmRjLV84dFBqVmQ5TFZDU3JJVlRyRTFLZGJkVGlVQkIxcnc?oc=5' target='_blank'>2481 強茂 - 高雄銀官股持股這麼高喔 - 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Fri, 03 Jul 2026 04:04:43 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiX0FVX3lxTE4tNUcxNHh2SXZrY1Y0a2lyRUhKc2pkaWRRM0xvSk1aNklyazVENU1hVE5vX1J0Rnc4OTBlOGk5WWkzc1hUaXpJQW1OdDlZYzdzQ3BWNXo4Y25lQ3BuUlk4?oc=5' target='_blank'>強茂攻三關鍵應用- 日報 - 工商時報</a><br><span class='news-meta'>工商時報｜Thu, 02 Jul 2026 19:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxOSElubmhPRjdxZUxqQWxIZTctNGZTWTQwMWg4ck9MQktnMkI0aXlqTVpmQ3o4WVdlSkZCcF9ldlB1TFk0cTZ3QjgyOTdFdjY3a0tfRmlLelo5ODRJQlBTTzE5Znp0dk9UNjFOUVJDS29UTk53dUFYX2FYTFMwZVctNHB0al9WZTFFbEUzTjl3?oc=5' target='_blank'>【12:15 即時新聞】強茂(2481)股價上漲近8%，AI功率半導體與車用轉單題材延燒＋均線多頭排列、法人與主力買盤延續 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Thu, 02 Jul 2026 04:18:50 GMT</span></li></ul>
 <h2>【電子零組件業】內部領漲個股</h2>
 <table border="1" class="dataframe">
   <thead>
@@ -333,8 +405,9 @@
       <th>股票代號</th>
       <th>股票名稱</th>
       <th>目前股價</th>
-      <th>當日成交量(張)</th>
-      <th>5日均量(張)</th>
+      <th>當日成交量(千張)</th>
+      <th>5日均量(千張)</th>
+      <th>成交量變化(%)</th>
       <th>當日漲幅(%)</th>
       <th>近5日報酬(%)</th>
       <th>近20日報酬(%)</th>
@@ -344,6 +417,9 @@
       <th>本月營收年增率(%)</th>
       <th>上月營收年增率(%)</th>
       <th>營收資料月份</th>
+      <th>本季毛利率(%)</th>
+      <th>上季毛利率(%)</th>
+      <th>毛利率資料季度</th>
     </tr>
   </thead>
   <tbody>
@@ -351,8 +427,9 @@
       <td>7795</td>
       <td>長廣</td>
       <td>626.0</td>
-      <td>1680.0</td>
-      <td>2025.0</td>
+      <td>1.68</td>
+      <td>2.03</td>
+      <td>-17.24</td>
       <td>0.0</td>
       <td>12.59</td>
       <td>71.51</td>
@@ -362,13 +439,17 @@
       <td>-</td>
       <td>-</td>
       <td>2026/05</td>
+      <td>39.40</td>
+      <td>47.36</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>2478</td>
       <td>大毅</td>
       <td>238.0</td>
-      <td>1313.0</td>
-      <td>1509.0</td>
+      <td>1.31</td>
+      <td>1.51</td>
+      <td>-13.25</td>
       <td>0.0</td>
       <td>5.54</td>
       <td>56.58</td>
@@ -378,13 +459,17 @@
       <td>16.47</td>
       <td>11.58</td>
       <td>2026/05</td>
+      <td>25.01</td>
+      <td>24.27</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>8046</td>
       <td>南電</td>
       <td>1185.0</td>
-      <td>13119.0</td>
-      <td>14333.0</td>
+      <td>13.12</td>
+      <td>14.33</td>
+      <td>-8.44</td>
       <td>0.0</td>
       <td>0.00</td>
       <td>42.60</td>
@@ -394,13 +479,17 @@
       <td>50.03</td>
       <td>35.82</td>
       <td>2026/06</td>
+      <td>15.85</td>
+      <td>12.52</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>2059</td>
       <td>川湖</td>
       <td>8000.0</td>
-      <td>393.0</td>
-      <td>413.0</td>
+      <td>0.39</td>
+      <td>0.41</td>
+      <td>-4.88</td>
       <td>0.0</td>
       <td>8.70</td>
       <td>29.45</td>
@@ -410,13 +499,17 @@
       <td>172.05</td>
       <td>79.14</td>
       <td>2026/05</td>
+      <td>77.74</td>
+      <td>76.10</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>2429</td>
       <td>銘旺科</td>
       <td>48.7</td>
-      <td>1750.0</td>
-      <td>1825.0</td>
+      <td>1.75</td>
+      <td>1.83</td>
+      <td>-4.37</td>
       <td>0.0</td>
       <td>8.46</td>
       <td>20.99</td>
@@ -426,9 +519,22 @@
       <td>19.59</td>
       <td>10.75</td>
       <td>2026/05</td>
+      <td>4.24</td>
+      <td>4.20</td>
+      <td>2026-03-31</td>
     </tr>
   </tbody>
 </table>
+<h3>長廣(7795) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxPa2hDMGljeHBZVUZFTE5pYUxBRDl4bUJuamE5ZzllYjdkb3RjLVBCcldSb3Q0eTAyOFJMNGtiaVczc0Y0YUlLNm1RMW03N0JzS3ZQSGlEVHRtVFpmLWg0NzVqMzRrQTYwbXBmUDY4dE9DMDhraWJ4YUlZMlVGd3lNY1VRaEpEMk5CdFFsMUt3?oc=5' target='_blank'>【10:07 即時新聞】長廣(7795)亮燈漲停至665，高階ABF載板裝置長線成長題材＋主力與外資同步偏多推升多頭結構 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Thu, 02 Jul 2026 02:09:29 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMi-gJBVV95cUxPVnI4VVZDeWlpanlpaVRDSTQwOXdxb1puSEhEVWpSMHlucTNqbWRJdHRKaF8wTnVicFJSeTZ1YmlVN1VFNjd2UlhhOW1jVXlocE9ZejF3STFJNVlpUDVoNGxRenY2VU9YOXNjU3R4Q3hYdHNaN1phODFKdW9QOWlUUTZoYUU5cHQ0N0wweFFuZjE5UGNDT21tbkJlZkNPaHRtcnZhcVFxYkgtU1NWMEV4UjllQVU0VXdFRFp3NHktWFVldzFlOXo5UXc4bHNHREV6TWRMZ29FYTF6d1QtMlBjOGVpcDR1MVpUSUxKS1BZSlVKbmJqOUxfYkk3bl8wa25Ra09LM1EyS1JxVFEzYWR1RlZUc3czQ0dLdDNuTm1oNzJtUkkzMUVRbGt1cXdBVUo2VnJHMmR6YVNLc1NZZ2pDSWhZYURiMkx2R1RsWkt5WGZXcGdMV1BMeG9fY0d6ajJKN3BpeXhfRFk2ZGxRMmdrSy1EQnlMTXFMcGc?oc=5' target='_blank'>躲在最上游的AI印鈔機！ 這檔「壓膜之王」 卡死全球95%載板製程 - Yahoo股市</a><br><span class='news-meta'>Yahoo股市｜Wed, 01 Jul 2026 04:18:32 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTE01Q1ZLXzBneVotczh3VW0xb3FSTjhpVE1Uc0xWUXR1X3FsV1VLdHZJZGg5aTlpYkV6RVBxekcxRk9EbDBvZmdYcDBxdFdpdWRTMDNnVTJJRGVrdUQyU1RBMVpVamY?oc=5' target='_blank'>討論牆 | 盤中速報 - 長廣(7795)急拉3.8%報630.0元，成交307張 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Sat, 04 Jul 2026 11:51:04 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiVkFVX3lxTE5Nc01FaWFKMG1SNjhIWkFXSVl4aXFjVGh3Q2N4WHRkaERQRTktWHM5TzJQQjB5TE5BbWx2M1cwQ0xEbHJlYjRxejEzNS1mai1tR3lwY2x30gFbQVVfeXFMTWJFQXdhVjVkZ3lHYmZNM1BydTltOVBOdUFDMnlTUFZ1UkJnX3BPazR6UGk3LVFnYzl1N2h6cGROMUZkLTc4R21Fc2lxS0JSb0xrYlRUcVZYNDYxWQ?oc=5' target='_blank'>飆股幕後》邁向Q4營收爆發期 長廣近月漲6成 明年會更旺 - 自由財經</a><br><span class='news-meta'>自由財經｜Fri, 03 Jul 2026 21:30:00 GMT</span></li></ul>
+<h3>大毅(2478) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxOR05ycUlOMFhrQWdheUtkUmZNMk9ka2FQd1lSNUFDbkNqTTJ3NFVlVkpjMXY1ODFHaXdKZlNraVdPZGlRRXdHQlljM25rc3VSaGRWZ3RlQTl4Snk0ZnBBWWppTmVaalVha1hpcHBxdWpNX3JoNklHR0JOUmNBeTlNekpreFVpdmRWVnIxSzVB?oc=5' target='_blank'>【10:40 即時新聞】大毅(2478)亮燈漲停攻至248元，被動元件AI伺服器題材延燒＋多頭技術結構配合法人買盤集中 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Wed, 01 Jul 2026 02:41:19 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMib0FVX3lxTE9tSWZGX3Y0LUZVMG1TZ2d5UVd2Q3RiZHZPVDlZZXIxZ1VyWC1KRndydFZhbE90QXNReFNFVTdsa19HanNKU0ZGMm15WlNiS1lMUHd6alU4TlZRR085RlQ1ZkFCVFNpVW13cGR1NGNPTQ?oc=5' target='_blank'>狂吃AI主板高階電阻！大毅(2478) 處置解禁首日爆量衝漲停 - 理財周刊</a><br><span class='news-meta'>理財周刊｜Tue, 09 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZ0FVX3lxTE42bmxueEs1U01IY2w3WDduQUhRVUJaeXZTVi1UNTIyZmpNN2lXWl9pMFhvcjhtZGh0NkVIQzJTMUdBd1hKd0VDMDNmTnktbmRNc0RqZEI3N2R0czhtUmhBWEQ1dC1LcDQ?oc=5' target='_blank'>【06/22處置股公告】大毅(2478) 06/22到07/03列入處置股，約每20分鐘撮合一次 - CMoney</a><br><span class='news-meta'>CMoney｜Mon, 22 Jun 2026 03:10:03 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTFA5TFF4TGRrZ2ItMFNyTVF0RlJrZTBFT2NTRjV6RjFPdzVPTG1KSnZsUTQzRldPcEhvbUxGakFvOXYxMTVIUGpkVHpwVXZUSWZRc2NCMlM4dkJwTGFwSHBKTTRmano?oc=5' target='_blank'>盤中速報 - 大毅(2478)大跌8.94%，報198.5元 - TradingView</a><br><span class='news-meta'>TradingView｜Mon, 29 Jun 2026 05:02:16 GMT</span></li></ul>
+<h3>南電(8046) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiX0FVX3lxTFBvVTMtSG1ES3luYlhkaHd3ZTMwV191V1AwYzBkU2dub0FPOW9XQ3liaEEwMGs4eVhBSHFneWttX282SWt0Vk8yTFlzOXN3R1Y4R0dlQXAya25oQzhVVlRB?oc=5' target='_blank'>南電載板訂單續旺- 日報 - 工商時報</a><br><span class='news-meta'>工商時報｜Sat, 04 Jul 2026 19:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiUEFVX3lxTFB6Z2g2R3pYeU1fQzlfdmxieU9GTDRqTnB3NXUyZmtBSWZON2R6QzJnNVRRSHZjZ3B1YVJUQ0dhSlpUMnVOa2JWdGVPczBVNWNq0gFWQVVfeXFMUG5rcFppdzh1MUlaZkpBRkJBeVViVV9xRXNiY0s2M1BhRWlqMXpGX0JGV1l6VzVUMzhHS3RtTkU2RjYzVnhWRjBmeS02d0Nfbl9XWmJIS2c?oc=5' target='_blank'>南電帶勁 6月合併營收登高 - UDN</a><br><span class='news-meta'>UDN｜Fri, 03 Jul 2026 16:25:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMib0FVX3lxTE5YTnRsRUJyeWVXWUJOTG9kdERHeGc5d05ONV9XYkpuLVlOek5XTW5qYlRKSXhMWEIzWTd6dVo5UlVLR0FNRkI5M3ZDVklUWEZWYjV2R3B6NjctTTJldUpXd1VJclp4OVh6cVhnUnRxQQ?oc=5' target='_blank'>南電（8046）資本支出創史上最大規模：從消費電子到AI 伺服器的結構性轉骨 - 理財周刊</a><br><span class='news-meta'>理財周刊｜Fri, 03 Jul 2026 16:04:24 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMigAFBVV95cUxQZ3NaVTBpX2xKbUQ1MFZ3YjJBS1JuLVJldmZaT2dyVS13X1l1NmlIUk5mM1pNbUthMGRyNVRVWjBEM3JCUUZ5eG9VSXdzUW5RekJJTDl1NW45NHdIdnQtUjdQWXFWSWs4X1JRUnozNUNCclFGZ0RtRjJLQzFUQUYyXw?oc=5' target='_blank'>欣興吞半根跌停，南電、景碩軟軟的…ABF載板還能買？臻鼎-KY呢？台股老手：3理由下半年繼續漲「關鍵買點曝光」 - 今周刊</a><br><span class='news-meta'>今周刊｜Thu, 02 Jul 2026 03:33:00 GMT</span></li></ul>
+<h3>川湖(2059) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE5sWkpxbVVVZG9XcERxOFhNX0VyV2dKMjlPMzNoa3JPTjl5SzZmaDhxQ0hBb2V2NTBHaGNoUWxvRTdxcnUtZEZraXJPMjJ0em9vcE5tSXhnOWI?oc=5' target='_blank'>2059 川湖- 今天算穩了- 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Thu, 02 Jul 2026 02:28:50 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiT0FVX3lxTE9mMkc1Z0RaWTlRSmdtX2pPY0FLcFlEYmdwZXEzV2JsRUVpeTJXa3p4UGEwRFJ5RGpTMDBKVmo4M2VKXy1LNS0zZUJRSk1QVGc?oc=5' target='_blank'>川湖全年營收維持雙位數成長目標 美國廠最快9月加入量產 - news.cnyes.com</a><br><span class='news-meta'>news.cnyes.com｜Tue, 30 Jun 2026 09:25:24 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMie0FVX3lxTFBlR0o2TTBMUHQ3VzEtcDRGbGd1aUVQM2pjLUxyUDFwcjEtMGtwdjVfOHYxNTk3ZjhsQnkxMjZBYzcxUG50X0lsejY2MHNTY2ZEcnhGaVRjeDE0U0duUVRjbEctZHcwSjFVWDJhMDlWT2U1TEVxalR4UldMUdIBX0FVX3lxTE9hbkFJQ3k5UmFIVjJtYVF1Sm54djJ0NGo4eVNLOTF5VmJWSmViMlJyWVUyZF90eTJQbjBrYnVXRlF2Rmd5V0RIWlBJODhhYlhXekRpUV9jREVsY2dZWllB?oc=5' target='_blank'>川湖營收／3月19.18億元創新高 第1季54.49億元亦創高 - 經濟日報</a><br><span class='news-meta'>經濟日報｜Fri, 03 Jul 2026 08:41:36 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMikgFBVV95cUxNZFAwN1I5Wkhfbm4wb1RtYnA3ZXlCa09ZbGxKSDd1NGZHNkFUYXNWSWNxWFhHekRhMFR2YXp5UFZMcTJCTXdiWkRLLUVWZHp0cDVWbW1JbkNzaV9yT0hDZjZaMzlXUl9QNWNjY3NMRzFXNDN3bkc5R1RSNWtGRHpEZDg4U21lNV9jMFBMQnNER0JSQQ?oc=5' target='_blank'>川湖伺服器導軌跨多平台，美國廠拚Q3量產 - 台視全球資訊網</a><br><span class='news-meta'>台視全球資訊網｜Wed, 01 Jul 2026 04:48:13 GMT</span></li></ul>
+<h3>銘旺科(2429) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTFBGU0hETDFhaHQ3QkZWS041VjlUaGF2eUR5RjAxbmI0TVUwUGtCanU1bXBZT2R2NmxRckR6dTY0MkN3UHd2eHhQUFgtdExNeDhESnhfUWVRZzV3VlVmQ2ZNSmVIaks?oc=5' target='_blank'>討論牆 | 盤中速報 - 銘旺科(2429)股價拉至漲停，漲停價48.7元，成交1,189張 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Sat, 04 Jul 2026 12:19:42 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxQaTM2dERWcV9hcHBHVE9PRzRER2xsVGtsVnNZdll2Ui1SMm8yRno2WUpnNGhBY0FoOVF0NmNJelVSTFZQTUVYZmg2TU54QkNaaFhvaGg2WkVMN1pCNVpDOW5Kb24yWnFFNjdubUZ6ckJNYUt2S0k1UUFWZVB3NW96N0VrM0F6Z1FYR3V6NndR?oc=5' target='_blank'>【10:24 即時新聞】銘旺科(2429)亮燈漲停至48.7元，國防無人載具題材推升買盤＋前高附近短線量價結構轉強 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Fri, 03 Jul 2026 02:25:15 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5MTmNCZW9WWDRLbTVTR1JEbHB4UFBTcVlyUzZka2VhXzdjeE42bDVmYTV1blVyVlJMNWRlRTVnTmNUenJsS2JSXzBFNnlqR0hfTC1OSDR1RW5NSFBuRzktT3NqVlgxY2M?oc=5' target='_blank'>【07/03 申報轉讓】銘旺科(2429)法人董事代表人周維昆之配偶將於07/06申報轉讓銘旺科股票390張 - CMoney</a><br><span class='news-meta'>CMoney｜Fri, 03 Jul 2026 13:10:03 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiX0FVX3lxTE81a1RhZGFWWnIzQVJHNVg0Y203X3BxeGZBMEV0aTlZcDNzVkdOeklSbmJ2c3B5OC1YQVBfUTNPMnJDYkxKS3phclFYUGpIS2ZSWXVONnlmQWRfNVNLMDJZ?oc=5' target='_blank'>趙彭博︱選股重於選市不過度追價- 日報 - 工商時報</a><br><span class='news-meta'>工商時報｜Sat, 04 Jul 2026 19:00:00 GMT</span></li></ul>
 <h2>【電子通路業】內部領漲個股</h2>
 <table border="1" class="dataframe">
   <thead>
@@ -436,8 +542,9 @@
       <th>股票代號</th>
       <th>股票名稱</th>
       <th>目前股價</th>
-      <th>當日成交量(張)</th>
-      <th>5日均量(張)</th>
+      <th>當日成交量(千張)</th>
+      <th>5日均量(千張)</th>
+      <th>成交量變化(%)</th>
       <th>當日漲幅(%)</th>
       <th>近5日報酬(%)</th>
       <th>近20日報酬(%)</th>
@@ -447,6 +554,9 @@
       <th>本月營收年增率(%)</th>
       <th>上月營收年增率(%)</th>
       <th>營收資料月份</th>
+      <th>本季毛利率(%)</th>
+      <th>上季毛利率(%)</th>
+      <th>毛利率資料季度</th>
     </tr>
   </thead>
   <tbody>
@@ -454,8 +564,9 @@
       <td>3055</td>
       <td>蔚華科</td>
       <td>152.5</td>
-      <td>17863.0</td>
-      <td>12870.0</td>
+      <td>17.86</td>
+      <td>12.87</td>
+      <td>38.77</td>
       <td>0.0</td>
       <td>31.47</td>
       <td>67.58</td>
@@ -465,13 +576,17 @@
       <td>-75.04</td>
       <td>336.32</td>
       <td>2026/05</td>
+      <td>31.88</td>
+      <td>16.83</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>5434</td>
       <td>崇越</td>
       <td>531.0</td>
-      <td>1609.0</td>
-      <td>1879.0</td>
+      <td>1.61</td>
+      <td>1.88</td>
+      <td>-14.36</td>
       <td>0.0</td>
       <td>-3.28</td>
       <td>21.37</td>
@@ -481,13 +596,17 @@
       <td>18.61</td>
       <td>16.42</td>
       <td>2026/05</td>
+      <td>13.58</td>
+      <td>13.32</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>8112</td>
       <td>至上</td>
       <td>92.9</td>
-      <td>29524.0</td>
-      <td>24584.0</td>
+      <td>29.52</td>
+      <td>24.58</td>
+      <td>20.10</td>
       <td>0.0</td>
       <td>0.54</td>
       <td>9.68</td>
@@ -497,13 +616,17 @@
       <td>253.18</td>
       <td>55.96</td>
       <td>2026/05</td>
+      <td>3.85</td>
+      <td>4.57</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>6189</td>
       <td>豐藝</td>
       <td>53.3</td>
-      <td>796.0</td>
-      <td>1367.0</td>
+      <td>0.80</td>
+      <td>1.37</td>
+      <td>-41.61</td>
       <td>0.0</td>
       <td>6.18</td>
       <td>0.19</td>
@@ -513,13 +636,17 @@
       <td>6.00</td>
       <td>-5.78</td>
       <td>2026/05</td>
+      <td>9.16</td>
+      <td>8.70</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>6908</td>
       <td>宏碁遊戲</td>
       <td>38.0</td>
-      <td>17.0</td>
-      <td>12.0</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>100.00</td>
       <td>0.0</td>
       <td>1.60</td>
       <td>-1.30</td>
@@ -529,9 +656,22 @@
       <td>-</td>
       <td>-</td>
       <td>2026/05</td>
+      <td>14.12</td>
+      <td>10.77</td>
+      <td>2026-03-31</td>
     </tr>
   </tbody>
 </table>
+<h3>蔚華科(3055) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE1YMUx5RGV2UHljR2JhbDB4RDlRMUtock1CMHBhaWt6Mk5rc3czRXdsMkRnYUlXY2lXSjh0OWdRdUhGUGhmbktXN3VrT0JsNVFZUC1qWHJmOHE?oc=5' target='_blank'>3055 蔚華科 - 3055才是貨真價實的玻璃基板類股，至於其他跟漲蹭題材的..... - 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Fri, 03 Jul 2026 14:08:26 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTE9PZWhkdXRSaWhubjkwVzFUaWVXMmdjOWNMZmtIVmJKVXprZDVudEZEeHlicmxzeEIzR0NjTmJydmRael9UUnB4WGZ5aXh2aE80TmhxdXYwOGMwVV9Rbmd1ZUxSZmw?oc=5' target='_blank'>討論牆 | 盤後速報 - 蔚華科(3055)下週(7月10日)除息0.5元，預估參考價152.0元 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Sat, 04 Jul 2026 22:31:57 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMib0FVX3lxTFBNZkpCVzRNN1k2LTg4ZnlMNmFZNkJBVnQyNXIzdkZCQ0UzSHRrbDJha2lnWE15d0RHbDlnQ0ltZ2g1UWJWRV80c3Zmc3pyOGxyVkFVci02aUwwTGRZYkR5WlY3Vlh1MnU5TVlmLTJlbw?oc=5' target='_blank'>揮別轉型陣痛！蔚華科自製TGV檢測設備奪晶圓大廠大單。2026下半年迎先進封裝全面放量新契機 - 理財周刊</a><br><span class='news-meta'>理財周刊｜Thu, 02 Jul 2026 03:51:46 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMikAFBVV95cUxPbm5vbTBFRTdYOFhBYUZnZ2VMd01tdXNtUXhHeTJ1eF8xdWxmdGdsUGlGS2dQSzJsYXFUbWhGM1RoSGxsNFZRSEpKSEpSSHd3aVJkUk9XTlE5MFpCQ1dLNDlrdVdNSUkteGtyX09ab2d5SmpodGsyZVlKSnhSbDVyYy1XYmdsRzI0U2tfQmxXd24?oc=5' target='_blank'>【即時新聞】蔚華科(3055)爆量亮燈漲停！買盤外溢，這「5檔概念股」接棒狂飆？ - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Wed, 01 Jul 2026 03:36:26 GMT</span></li></ul>
+<h3>崇越(5434) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiW0FVX3lxTE14OE03VnBBUmo3UDBnZ3hCSURuVWJtQ0ZGRnJXZnVxZUZyajQyV25YYmRNLWprY1NrYVFYM3FxeU8tN1VYeTNKVUw1b1RIRlp1elV4dWpONDdZRGvSAWBBVV95cUxNajc1N0RVS1pqbUJYMFotOGJNRFhZS2oxLVBBVmc5THIxYWlvbXQ2b2JENFBkZ2tsWXlLaFEyTFJFcmVkM01pa2w1bUw4T0M0a0xBU3lGUEdwekRHZ3RBWVM?oc=5' target='_blank'>先進製程與高階載板材料續強 崇越華立營運加速升溫 - 經濟日報</a><br><span class='news-meta'>經濟日報｜Fri, 19 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMihwFBVV95cUxNczI2OU5jUU1ZUWxUTE12ZURVZGx0X1N4eEZZaDRaOWV5b0pSbVVsT0xIWmppaE1QMjlFMDJHM0JBN1VJbDFlMVMwRW9RQ2w3WTY2aTFkOUhBR2lwcl84QVZPVzVoOU81dzg3M2otV0ZyUjN4ZUlMWHJVcW12QXlJRmY4TjRMbGM?oc=5' target='_blank'>主動式ETF資金轉向半導體設備，崇越、光聖為何同步被加碼？-黃詠晴 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Sun, 05 Jul 2026 02:55:08 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiX0FVX3lxTE56bTZBOUZKaGozYkF4Y3VmSFRkNnkyRHU3M0FzeUYzekhvUGlWY253d0tvbVZ2OWZtamxMZWxIUU10Y1lTLXdOZmhKeHBValVTZm1PdTI1T1FyclVBUGFj0gFkQVVfeXFMT045VHdLSlhxSWRxcE9sN3ZQMk5Ia2NOcGMzaUk1enVVbEhLQzA5enFVaWFzOEpnaFg4WXRpRGdURkdzM2l2RmFLRHVOMXNJTVNLU3lxTXpZaGgtSmY2a1lvV3FrUA?oc=5' target='_blank'>崇越科技5月營收65.4億元 史上第三高 - 自由財經</a><br><span class='news-meta'>自由財經｜Mon, 08 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMizANBVV95cUxPcndkS2s1TE9HeVEwX1Z2WFNTUWh5UHpZUi1OWkVtU3FrRHhFcFk0UFc5dGdycWpBVjFkbGlWam51NXBmMmZXRFRvcVpnZmVxR3Z1bThpazhFcVFBUUQ0X2FnWDNiZ1g4VVlLb1hCRGdRSHNlTWJweWdjUGo1eDJibXVRWWgxQUQ1Wm1yUzRxMy1JRGdfWV9VY3cxVFNCWTZ5U3hVV1FXYWZreUN4Nk1mSHctUl9OVm5oeXhqb0MtQlM4a2pfblFVQnlqM0N1UVN1Vk43RXZzZ1NSaEdzYV92LXd2VDZEd1Y2ZmlhejNBbTQ3VjFqaGJnMmM1RHJrQzNHSnUtQS0yckpzRzBoVnNVZklUbS12WUxDUzZ4dHBxSFF2UTBPbHMwcEN0T3ZYY29aRFlSRWxkZkVZek5fd0ZZal8xTXdkRFZfTkdfekR6clVFSDJ5UG1fTnd5T2J0dlA4WTBzdFFBajVSdjQ5eVYtRVZNTnUzR0c3eXRaOW5YZWRhdmlhQ1BDdTBKNkV6RlN0MTUtQTB2LWF5d2VKZHF1YW5ld081c2tsRjdtbERJcndTMEZoaGlPT3NTTXhoWERfYlJQaE1JTDdFckI2?oc=5' target='_blank'>今日漲停股｜生技與半導體供應鏈領軍！藥華藥、崇越、雷虎強勢攻頂0629｜豐雲學堂2026 年 07 月 - sinotrade.com.tw</a><br><span class='news-meta'>sinotrade.com.tw｜Mon, 29 Jun 2026 07:50:47 GMT</span></li></ul>
+<h3>至上(8112) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTFBVZG03dTFGUVZ2bFVPeG1xR2c1WDRSSFVlNEtGNXUybTlzMEdFcDRjYmhYQ0otTDBNbzc4bGpoZDRoUzFSSlFXYlIyTUllbm9yVUg4YzltamQwZFVqZF9TRk1KcU4?oc=5' target='_blank'>討論牆 | 盤後速報 - 至上(8112)次交易(6)日除息3.8元，參考價89.1元 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Sun, 05 Jul 2026 01:43:19 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiswNBVV95cUxQaHJYQkhlazdIa2hkSHhCVU1RS1JrcXVsSWN1T243RC1QUDFfc3FtNUxvYk5uVWpFV2pZS0hiaDE2UndDWU51aEpTQ3B3S0plSWRWY3lJbTFOZXc1V09VdHZ2VnVJUzR3cVpFVV8yNnpfTEdCT1hvanpCWUJJWlluS29NYjU0ajF1aThZVWVyMWdILVVRZHdXSlNHRGxyUVRIYTROWThuQlRjbXkzR3JFQy04ZFZhSmJnV0JaLWZzbldXRXlFWjRVNXFxWHg0R2VpS1NWc3pYVkRlM0dxemxTakhETExkOUthRUxrNktzQzVzSTF5OG5LVGdhZ3FGS3NzNjk1TGZLbG9pOEEtRDFOX1pXaWpnUEdmZ3BidzZBbDkyTlQzd1kzTXVPQnMwd1lhYS1DYUpFRlRNWk5RMk00b05JTFpzN2pOYmhVNjY5ZTFaQ2NnQW1nSWFQRDFaSi1NV3dFWllheVhGOEVTS0QxSTVYcXlWRllJOXQ1Z0VmSjBXQWFNZ1pkZk0xUUZfaTFyajNGcW1IT2lhcWUwSm9QUFk5UGRQTmptYTFVQ3RKNVY1TUU?oc=5' target='_blank'>至上8112走強卻沒帶動同族群，這波是真轉強還是單兵作戰？ - CMoney</a><br><span class='news-meta'>CMoney｜Fri, 03 Jul 2026 20:07:48 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMidkFVX3lxTE9mcmlLVktMRFhqTDNoWnoxb0JxWVo5bkkxdzBpMVJjX1ZyUG5KdFQwUEwtbGVpaGYzMHpIalQ3a01JaHkyVFRzZkdNWWZzX29jMENONDRvajFEdVJ3Y2dfb0sxZTd4OEVleVJsbU1NSVE1LUtFZGc?oc=5' target='_blank'>營收速報 - 至上(8112)5月營收539.21億元年增率高達253.18％｜新聞快訊｜豐雲學堂 - sinotrade.com.tw</a><br><span class='news-meta'>sinotrade.com.tw｜Wed, 10 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWkFVX3lxTE9Vdy1QMGxSSnlCWHVUTW84RTVzVmNPdEFIYzY3MTRWUEhhbDBaSWZSYjRCbTZTNkJQc0RsVXUyR3U2RDNDOTMwN3piUFJKMVZ3dkJOOXZJY0tvZ9IBX0FVX3lxTE9maGRnYjBOZXAzZEU5Y2RlYkJsV1dwX09EZ3JPX18wMTNnaTNEdGdhX3M3dDVRMk5laGlWUjN6VkRLdVltalc1STJfbDFYRkJjaWtWZFlxQmJhbll5RE9J?oc=5' target='_blank'>至上：記憶體漲到2026年底 - 經濟日報</a><br><span class='news-meta'>經濟日報｜Mon, 27 Apr 2026 07:00:00 GMT</span></li></ul>
+<h3>豐藝(6189) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxNT0xkRXM4OE9SRHBlRm52RXFld2dKc1FaaHNSaEtDZW93ZnBwRmF4YzgyT3RQY1JyWXhDUFNyQzRPa05UTHh6TkNIU1kwTjFzVzQzQVFIR0V6VDJ2WnFBVlo5NnNhcFhJNjY2cV8xdWNLbmF4eEJ1cTVqOFBHX3NONEZaak94ay1kOERROXhB?oc=5' target='_blank'>【12:53 即時新聞】豐藝(6189)股價勁揚至54.2元、上漲7.97%，除息後買盤迴流＋法人短線回補帶動技術面轉強 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Wed, 01 Jul 2026 04:54:13 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTE1sYTZrdlU0Q3dZUG5zb0E1OHBLRURzV3o3dWJwSVJGaFNoU21yRnVCc0xkdTFwdGtZMFpaTDY3VjNjOFNJWUJwSjUxTTFaY1VJQXVobVk5RGRXUmhLWV9JNVRybUE?oc=5' target='_blank'>討論牆 | 盤中速報 - 豐藝(6189)大漲7.17%，報53.8元 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Thu, 02 Jul 2026 12:33:06 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE0wR09RNF82MklnUHpHNWdBT3RDcnRxdURMTEU3OGZqbUYtREx2T3lFM0NLdWhkTkJseTNZN3Y1NEgxM3pNMFBVQjdPb0JyUEFJczZtXzUzdVo?oc=5' target='_blank'>6189 豐藝 - 今天在崩什麼？？？-股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Sun, 10 May 2026 11:47:16 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMikgFBVV95cUxOV1hGODBmTjNoei1HazlWV00teWxhYlVoN2dlSlRaM3FVNDZSak8tNmN3aG9hTDBBTFlyMWdrdTB3b1NXNWI1endNbk1mb0NsTDdGN05JbnZEZVYxSE14Tl85ZlFSX1RZeTFrdUc5dEoxLU1VVVhsRjRuQTBTUnVOaGVDbGRJVnJRSkVVUkpubXJwdw?oc=5' target='_blank'>豐藝導入新代理線/AI產品，力拚穩健成長- 新聞 - MoneyDJ</a><br><span class='news-meta'>MoneyDJ｜Tue, 18 Nov 2025 08:00:00 GMT</span></li></ul>
+<h3>宏碁遊戲(6908) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiggFBVV95cUxPc3c2Um13S2hmbnJxNGtKZVVxeTVWak43N285OXVQSUpXZjhqSlJXdjNnUDlmakhXMHdzVER3UEFlcHFfeS1OQjh2QmJfU2pjelg3TlVSbEJxT3Q3MExxUTc3UFJSQ1FtellhWnpyeUh1X0czb2VYeUxmSlhoTFBnNVNB?oc=5' target='_blank'>宏碁遊戲-創6908當日股價走勢_個股_台股 - 富聯網</a><br><span class='news-meta'>富聯網｜Thu, 02 Jul 2026 19:09:01 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMi0AJBVV95cUxNRjNiUzlnYVJGUVM0ZHNpWUJHTGkwcDNVOXllZmNBOUpYcW1GUHZQOTNVNVVFZjd4ZURnOVRHV28tVFdzcWl3UWRXdWF4SmZHc2NzdkJuc1lObFRyZWdmQ1BIS2g1aE1VUmpOVjJJM3lWbDFuWlQ0QXB2cjh0VEN1a3JsSGF1U3dGWUtVT3JnRkcwTF9qZ2dIX1RMRllEemNHMzctZDd5X0swc2tOdjVoelcxdmRkWV9jMXZMSlg2WVp1b1VNQkZIekdmUE00Z2RGMmtxOWp6bU44ZWtKNkpXV1BrTDZ5b2RDMWluOUxXUmRJNE1Kam9idkVhc012dm1VRDFkeHY3N0g4azh6Z1E2d1NFZjA2SHpDdUpzb1dlSlhRNkhfNk9TOEpIVVg4T2FuQlRIU1UtS3lLZUE2TmRIOFRyaHlzWk1xb0t1UzNUZ3k?oc=5' target='_blank'>抽中一張近2萬元入袋！宏碁遊戲預計3/25掛牌上市 - Yahoo股市</a><br><span class='news-meta'>Yahoo股市｜Fri, 06 Mar 2026 08:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTFBVRlJtRENzdnVTXzNyWENpNFBHeFpYdDlUcGIwTV84NEJuR3p0ZGhoMk45NmxtR2pqOERNQzJnWVhILVQ0T1VZcGgwdzJKN25UUmpzMEdZdDA?oc=5' target='_blank'>宏碁遊戲-創 代子公司Winking Studios Limited公告庫藏股執行情形 - CMoney</a><br><span class='news-meta'>CMoney｜Sun, 28 Jun 2026 02:03:02 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiigFBVV95cUxOWDkwX2g1ZHgyOHNsTlUxcFJjcHViMjFYeTBSTU9xZGZGWWJHalozTlM2RmZwMS11WGhvWXFUaGp3RlotWlQ3bXJoR0xHQTg0LWZMbTFYZWxhZC1DUktmcTZXNUR1NGhTT2QyQnAxOXhUSDNIblB1ZmR2NFE0X2dfUGNIX1lZMjlucnc?oc=5' target='_blank'>【2026/03月營收公告】宏碁遊戲-創(6908) 三月營收4.16億元，表現亮眼、呈現雙成長，年增56.68% - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Wed, 08 Apr 2026 07:00:00 GMT</span></li></ul>
 <h2>【化學工業】內部領漲個股</h2>
 <table border="1" class="dataframe">
   <thead>
@@ -539,8 +679,9 @@
       <th>股票代號</th>
       <th>股票名稱</th>
       <th>目前股價</th>
-      <th>當日成交量(張)</th>
-      <th>5日均量(張)</th>
+      <th>當日成交量(千張)</th>
+      <th>5日均量(千張)</th>
+      <th>成交量變化(%)</th>
       <th>當日漲幅(%)</th>
       <th>近5日報酬(%)</th>
       <th>近20日報酬(%)</th>
@@ -550,6 +691,9 @@
       <th>本月營收年增率(%)</th>
       <th>上月營收年增率(%)</th>
       <th>營收資料月份</th>
+      <th>本季毛利率(%)</th>
+      <th>上季毛利率(%)</th>
+      <th>毛利率資料季度</th>
     </tr>
   </thead>
   <tbody>
@@ -557,8 +701,9 @@
       <td>1714</td>
       <td>和桐</td>
       <td>22.75</td>
-      <td>16800.0</td>
-      <td>14183.0</td>
+      <td>16.80</td>
+      <td>14.18</td>
+      <td>18.48</td>
       <td>0.0</td>
       <td>15.78</td>
       <td>79.84</td>
@@ -568,13 +713,17 @@
       <td>84.85</td>
       <td>71.71</td>
       <td>2026/05</td>
+      <td>11.24</td>
+      <td>14.20</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>1718</td>
       <td>中纖</td>
       <td>14.95</td>
-      <td>148912.0</td>
-      <td>160677.0</td>
+      <td>148.91</td>
+      <td>160.68</td>
+      <td>-7.33</td>
       <td>0.0</td>
       <td>11.15</td>
       <td>49.50</td>
@@ -584,13 +733,17 @@
       <td>9.14</td>
       <td>4.23</td>
       <td>2026/05</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>1710</td>
       <td>東聯</td>
       <td>18.85</td>
-      <td>43260.0</td>
-      <td>39576.0</td>
+      <td>43.26</td>
+      <td>39.58</td>
+      <td>9.30</td>
       <td>0.0</td>
       <td>12.54</td>
       <td>28.23</td>
@@ -600,13 +753,17 @@
       <td>-28.90</td>
       <td>12.90</td>
       <td>2026/05</td>
+      <td>1.66</td>
+      <td>-1.71</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>4763</td>
       <td>材料*-KY</td>
       <td>51.30</td>
-      <td>23189.0</td>
-      <td>20879.0</td>
+      <td>23.19</td>
+      <td>20.88</td>
+      <td>11.06</td>
       <td>0.0</td>
       <td>8.23</td>
       <td>21.13</td>
@@ -616,13 +773,17 @@
       <td>-22.69</td>
       <td>-41.52</td>
       <td>2026/05</td>
+      <td>55.58</td>
+      <td>57.83</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>1709</td>
       <td>和益</td>
       <td>23.70</td>
-      <td>4691.0</td>
-      <td>4876.0</td>
+      <td>4.69</td>
+      <td>4.88</td>
+      <td>-3.89</td>
       <td>0.0</td>
       <td>7.97</td>
       <td>18.50</td>
@@ -632,9 +793,22 @@
       <td>5.38</td>
       <td>3.29</td>
       <td>2026/05</td>
+      <td>20.33</td>
+      <td>17.58</td>
+      <td>2026-03-31</td>
     </tr>
   </tbody>
 </table>
+<h3>和桐(1714) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiggFBVV95cUxPeE5oWFo3NmlUeU5mX1BmanY4c0IyQTVNZTMtMHNBOVNZTERYWjJWOUVyZkxZTEJzWXFnN0tWQ1hHbmxlRVRybFFWUElWOEtFU0hFRTg0UUpadXppUWNHUEl0elUtcU5jbUlTTUdhelJoeG40cUVjcFo2ektYTGo2cV9R?oc=5' target='_blank'>和桐（1714）這波走強，先反映的是題材，還是轉機？-蘇宛真 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Sun, 05 Jul 2026 03:40:14 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5CdkRtTFVsOTY1a1p0RHFVWFA4ZmRabWMxWXdRRUhrQ2hPYkRwQU05ay1abDNqMkJvcEROb1FldG9tZWJmZC1yZzBsS29kTWVrbjY4aEVoSVlqZ2pZTmZmTWdVcHd0TFE?oc=5' target='_blank'>【即時新聞】和桐(1714)狂飆遭關緊閉！這「4檔化學概念股」籌碼多空大洗牌？ - CMoney</a><br><span class='news-meta'>CMoney｜Tue, 16 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxPSEZGYTZTNEIwVjNVcjMxZWp6c3UxM056OF94UVhfSHpRU0NweF9taWZnbVVEdTRWOVVwNElRLS0wZER3STFKX0t3Y1BNNHR2X2tkNkkyYWRJbHFlNm1oMnJCaE43TllkeS1hZ0JTcmV3amJyVTlrT2dLMWh1WFZkODFvb1FCVllWaHRBaXFR?oc=5' target='_blank'>【13:02 即時新聞】和桐(1714)股價大漲9.66%至22.7元，受化工原料行情與營收爆發激勵＋法人與主力買盤延續推升多頭結構 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Fri, 03 Jul 2026 05:15:52 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMi2ANBVV95cUxOZ25RY1VkRUFBWWxwQmE4bVo2cTdWU3NGVjV0NzNXLWJvZ2hFeFFiUGRmQ3pNeE0wdnpHc1k3SWl1bms5VW5ONzlNbWN4ZEN0cnlTdGdvR1FWZ1F2bkNocHZBdHZzaERueFk4SUlDQ3hhc19uR2NRS1JLNDIwbUl4Y3c3UURqWk1wMDdlaG9UdU9Td3lnVXFUVnB1dTBBVXBRMlBMcFlqclY1Ym94bTVBd1JFamk4Ni1KRUFlWU5GeHpuMWVHeVI5Ylo3RjBtZks1Z1lLR083dGdpT1g3ZGxlNGl0YU9fQml4eVlSR1BralVCWU9hZ1FRc3BLSF94SVRrc3lJLU1fbXRUREFJYzlxbkc5TUdMeDNrOEUwazdGOTRZOFFFV2w3N0kzcHhTN3ZVdmFlNW1TSFpENHV1TktmRFphek5ZV2FoZVhCTHRCOWZpd2xJWWtlUnRQeldLTmVoX2lUQU9QdFNra0oxVU9DeWx5b0hvTTRrMXpzR3p1U0RPT09xcW9BcHZTWFh2R1BUbVV2dWs4d1FpYWV2eHIyUnRJS0VHbXlOaWRVRzBhcC1CVkd2VnhTZDdRSzZjSGx6aF9kTkZLRHQ5Z2l5aDUybFhKU210OWNO?oc=5' target='_blank'>今日漲停股｜台股震盪劇烈，和桐、新盛力、艾姆勒轉機題材受資金青睞0608｜豐雲學堂2026 年 07 月 - sinotrade.com.tw</a><br><span class='news-meta'>sinotrade.com.tw｜Mon, 08 Jun 2026 07:00:00 GMT</span></li></ul>
+<h3>中纖(1718) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiWkFVX3lxTE51bUNvZ0hMUUJ3U2I2ZlVmOUdTVFp1N1dSYXp0cjl5MnF6ajdOQ2RzX2ZlclZwSGZTdFBvSUpQdk1MdG5sbkxSX19EZ05mR2piOGJIS1RkdVdfQdIBX0FVX3lxTE45bTlVOTZCZmlpME0xTEgyNXJKMll5djc2ZUx5ck02Ym1TSUdDdjFPMGkyRU9IMTRzTlNSMmhmeHU4YUZTS1Zpb2J1TkRwWHA1eFVwSmUzV1NtWUo5WDlN?oc=5' target='_blank'>中纖公告處分台中銀股票 股價連飆四根漲停 - 經濟日報</a><br><span class='news-meta'>經濟日報｜Sat, 04 Jul 2026 09:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiUkFVX3lxTE5YLU1tMER1S2djT0ZEWFY1WVo0NjY3S1lNX2RGd2JXa2QyN0ZSUmtURG85VHNCcmpPUi1acGtaR0Z6Um16Wkp5aDcyX3o4NU9leGfSAW5BVV95cUxPV1FObmdpd29Ub29CU1l6V1dlVzhSclRYQjRPU2RHcVo5ZWJsZC1zV1BnTzhTY1lmUVZ0NGpVbEdFTnNQVHN1QlZvV3RlQjh4OU0wVHk5TTI0elROX0ptRkJOaFZMMWgxVTEwVWt4UQ?oc=5' target='_blank'>妖股中纖放量衝漲停奪成交王　挾「AI轉型題材」暴漲暴跌 - ETtoday財經雲</a><br><span class='news-meta'>ETtoday財經雲｜Fri, 03 Jul 2026 02:25:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE1LZ2V3OXh6bGY1X2hkb21JNzhhQ3g0S3lpdVFZbzF1NU9ldXEwWGFBeF9CMDBjb2JNX2hCZFkxQklqNFlUVFZyWE82aHNxRWpXZU5qVUZQT1M?oc=5' target='_blank'>1718 中纖- 中纖轉型投入的AI 貨櫃型算力中心，以及半導體特用化學題材- 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Tue, 30 Jun 2026 03:12:05 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMigAFBVV95cUxQaHhXalJLNkNjNTdFTnp3WW15cHFiNFY4c0VFaWZESUlVX3h0TVMwdlk2ZnljTGVYTTZmazRLWnY4NE5Cc2FfeTVLMk0xWVlrWFNOaUNKNkhOdW96TG9yeXliOU4zdVRGYVNvWm5FSFFPalhUc0FXd0JraC0wa2xBbA?oc=5' target='_blank'>中纖(1718)做什麼的？6元雞蛋水餃股變妖股、連拉漲停憑什麼？老傳產翻AI新寵，中纖股票可以買？老手示警1風險 - 今周刊</a><br><span class='news-meta'>今周刊｜Fri, 03 Jul 2026 02:59:36 GMT</span></li></ul>
+<h3>東聯(1710) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMib0FVX3lxTFB6TDR2TGU0YV9vYTdqYUNGVUZVWm4xRUt5bG84N1JLVVd0eWNDMm8tbF9CRF9UNTYwUXZoQVNKdy1NbC1NNkxaSmdYS1NwX09HMmxEUHFOREVWNXY4Uy1GbXplNno2bm96Wmh3VWFFRQ?oc=5' target='_blank'>南韓急搶高純度CO2！東聯(1710)「晶圓級特化」 卡位先進製程後勢看漲 - 理財周刊</a><br><span class='news-meta'>理財周刊｜Tue, 30 Jun 2026 03:22:34 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgJBVV95cUxPTFNIVHp4X1BUQU5JNDZCS2RkaXNHNFVuVVZibzM4M2RaQTZWS1JuY0ZqbmtOVThVNVB6cVEzaW02cWZNeTdibklMVE96X05TWDEzU2licUd1MGtsQmtNenFHVnZxZFJwd1dEbGNoRlFTaEk0bWpISGVWcWx3UUg1S2FCREY4MDF1UFBZblhaczVsOFk0X2dEVkx5R3k0MmZxa0ZJRWJFVVcxQzFPekNoZUZuWmVXQUVRam10Si1nTFdXckd0b0E4eV9tSDhMVUN3TXlvV0VCZ1VMalRCYWtUbzRseFEtMzRhYmlNZ0VWU2R0cVJBUGFUaFdUTDU2X29rUGxON1hFREYxenVLTlE?oc=5' target='_blank'>EG價格持續走漲，東聯Q2/Q3營運看法正面 - Yahoo股市</a><br><span class='news-meta'>Yahoo股市｜Tue, 30 Jun 2026 02:54:05 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxPc0hfSlFRMlViYVZkd2dXUHlDZ2R1UWR3NEFfZEhHQ2FMMVY4TUU0TkJnUGNjYVV4RDQ5SndJWDVVQ2xzalVyeEhLMmNvblFMUURtSjFjdGNHRlJ5NTEtZnphYXY3dVNDcWVGZXh1Ykd3QVpLdmI2WHZMOUFCdTBIemZtb3dLZDBmQnVwdlBn?oc=5' target='_blank'>【11:14 即時新聞】東聯(1710)亮燈漲停18.4元，高純度CO2搶供題材點火，外資與主力買盤同步推升技術面轉強 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Wed, 01 Jul 2026 03:15:28 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWkFVX3lxTE1LMWxlTkxyTHIxWU1ac052a1N4QktKRHpKSHlCalV4SGVINHRvWjdGaVpTTEpMZ2dkckZ0dXUtc1gyb29XYV9hYWN6NnJaUlVsdHZWOW9Sb3pNd9IBX0FVX3lxTE1wVEltN3JDTENEWGhBdk5CbzNOSTJiazgtMVpSYnZZZjRXb3drYmxLeE9oaVJBeTJUeHdHcEtvaHYxdDF2MUJqTnBlMExxRDJDWkJDYUZMTVd1STM1VENj?oc=5' target='_blank'>東聯獲利／5月稅後純益1,100萬元 年增逾一倍 - 經濟日報</a><br><span class='news-meta'>經濟日報｜Thu, 02 Jul 2026 07:58:47 GMT</span></li></ul>
+<h3>材料*-KY(4763) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE80NC1NemlPeG1HMzM0SldlekQxcUw1bXplY2VkSzlhWTlZWE9NLUdiWlpKLVlkR2M1TVlkYlp0TUl6ZEdPOUwydmJCaGkzLWtmSGZkQ0Y4X2w?oc=5' target='_blank'>材料-ky 打底成功～慢慢來準備向上⬆️ - CMoney</a><br><span class='news-meta'>CMoney｜Fri, 03 Jul 2026 01:34:27 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxQRDFiVnR3WTZGbTJXY2JwVmdPZ2NiSnlkUWxTa3pLV2w1bTNyc0FES3ZVbkxhQ3FIZnBPRUk5VHhBd2NBSGtobWtMa2dOQjdFS0RRbUxTSGRHeHpjbk4yMGl1NEtjLUhuOWdMN1BBZU91dTBNenpCOVdFdV9Mb29nRUhiWUl5UXZCQmt1RlZn?oc=5' target='_blank'>【09:20 即時新聞】材料*-KY(4763)亮燈漲停至47.85元，納入璞玉精選收益指數激發買盤＋短線跌深反彈吸引資金迴流 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Mon, 29 Jun 2026 01:20:21 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE9HYVRQajBmSDc4a2t1ODloRmdIdzliYzdnODdRaTlZc0haSDRBVXpnYmJweHVJWEJyWjMtY1BucTlIMklKZERaek1sbGhIQmZXLVExU1Z6TFc?oc=5' target='_blank'>4763 材料*-KY - 這世界偷偷愛著你你不知道而已⋯ - 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Fri, 03 Jul 2026 14:23:08 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMigAFBVV95cUxPblVxZzBVWVVTcDc1TnFkY3ZuVFlpTmYycFhLS0cwYkVtR24wbUFuSDk4dmZUa18yd3JHbFFQNE9COHM1cmhGeE8zYTVSV3QyN0NPZVpQeHFpdG1pTDh4MnNhVHBnZENtUjVMU0thZnVYNDJRNkdrV3VUV0xJUVpndg?oc=5' target='_blank'>材料-KY(4763)一拆十，股價88→58元...營收創新高卻不賺錢，股票還能買？昔日傳產股王翻身3關鍵 - 今周刊</a><br><span class='news-meta'>今周刊｜Thu, 13 Nov 2025 08:00:00 GMT</span></li></ul>
+<h3>和益(1709) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxPZ2dnWFAtRmJERW9PLVdyTnhWV1kxTEFybEMxc3NZZmxLU0dPVEp4RzNUcnlXa0Q3Y1pRS0RrckktWnJteldJT05LdmxLT2VIeWEwakliT1B6NlhDZkRSVUM5T01sYXdVaUFKbEt4bnNRSUpWZ3ZOdEgwSmFLWkk1bnd5UG5TTTBxYS1zVU93?oc=5' target='_blank'>【12:58 即時新聞】和益(1709)股價上攻逾4%，受營收回溫與清潔劑剛性需求激勵，多方籌碼持續集中推升中期多頭結構 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Wed, 10 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTFBqcThMVjY3WlZDcXhvT0Z5RXViOUJRZ3ZpUWN3NG1PaUFjTXl6ZkdhUUNxUVFrZWFGMG8yeWJiNmhLTDMyMHlJVWM3dHNIclhkZkFjY2VtRGtuWXFvLXd2TEFiWjQ?oc=5' target='_blank'>討論牆 | 盤中速報 - 和益(1709)大漲7.06%，報23.5元 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Wed, 01 Jul 2026 06:55:26 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE9IRjlPT3ZOMnVEa0YzZGgwdVZheUkteGZ3UHFIZjU0U3dnRHd4LVM1UHY4Sm9CZy1VWWdxYzlOUmhyb0xma2RwdVZsekRQcUMtcThvdW5fVm0?oc=5' target='_blank'>1709 和益- 股市最新爆料，掌握股友們對眾個股股價、技術分析、新聞的第一手... - 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Fri, 26 Jun 2026 22:57:42 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiUEFVX3lxTE5tNjVhQXF6RjRsMGhLRkdiY2lkR0lxb25MOWZ4UGNOVFhaSDFYS2dfTTBqMUlaZ3VQTjltbE5jZWVoQWpCRVVmZWlsSWNiQ0N40gFWQVVfeXFMTi1fZkJlbEE0WTg5VWxYb1p1M01qMHlDWThrd3ZudXg2NC1saFZkYlI2RWZQd19ua0hwNlNTSXk3dldqWEpldUJod3VuT0tSc0VpQTV4QXc?oc=5' target='_blank'>和益銷量回穩 後市正向 - UDN</a><br><span class='news-meta'>UDN｜Thu, 18 Dec 2025 08:00:00 GMT</span></li></ul>
 <h2>【電子工業】內部領漲個股</h2>
 <table border="1" class="dataframe">
   <thead>
@@ -642,8 +816,9 @@
       <th>股票代號</th>
       <th>股票名稱</th>
       <th>目前股價</th>
-      <th>當日成交量(張)</th>
-      <th>5日均量(張)</th>
+      <th>當日成交量(千張)</th>
+      <th>5日均量(千張)</th>
+      <th>成交量變化(%)</th>
       <th>當日漲幅(%)</th>
       <th>近5日報酬(%)</th>
       <th>近20日報酬(%)</th>
@@ -653,6 +828,9 @@
       <th>本月營收年增率(%)</th>
       <th>上月營收年增率(%)</th>
       <th>營收資料月份</th>
+      <th>本季毛利率(%)</th>
+      <th>上季毛利率(%)</th>
+      <th>毛利率資料季度</th>
     </tr>
   </thead>
   <tbody>
@@ -660,8 +838,9 @@
       <td>2380</td>
       <td>虹光</td>
       <td>22.0</td>
-      <td>182.0</td>
-      <td>182.0</td>
+      <td>0.18</td>
+      <td>0.18</td>
+      <td>0.00</td>
       <td>0.0</td>
       <td>13.70</td>
       <td>300.00</td>
@@ -671,13 +850,17 @@
       <td>32.56</td>
       <td>3.95</td>
       <td>2026/05</td>
+      <td>38.61</td>
+      <td>24.41</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>2483</td>
       <td>百容</td>
       <td>67.1</td>
-      <td>2309.0</td>
-      <td>2347.0</td>
+      <td>2.31</td>
+      <td>2.35</td>
+      <td>-1.70</td>
       <td>0.0</td>
       <td>17.51</td>
       <td>100.60</td>
@@ -687,13 +870,17 @@
       <td>34.28</td>
       <td>15.00</td>
       <td>2026/06</td>
+      <td>13.23</td>
+      <td>8.90</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>6834</td>
       <td>天二科技</td>
       <td>132.0</td>
-      <td>749.0</td>
-      <td>856.0</td>
+      <td>0.75</td>
+      <td>0.86</td>
+      <td>-12.79</td>
       <td>0.0</td>
       <td>10.92</td>
       <td>93.55</td>
@@ -703,13 +890,17 @@
       <td>58.67</td>
       <td>32.25</td>
       <td>2026/05</td>
+      <td>23.04</td>
+      <td>16.34</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>2493</td>
       <td>揚博</td>
       <td>314.0</td>
-      <td>9529.0</td>
-      <td>6355.0</td>
+      <td>9.53</td>
+      <td>6.36</td>
+      <td>49.84</td>
       <td>0.0</td>
       <td>7.35</td>
       <td>91.46</td>
@@ -719,13 +910,17 @@
       <td>24.91</td>
       <td>-3.11</td>
       <td>2026/05</td>
+      <td>29.19</td>
+      <td>29.23</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>2434</td>
       <td>統懋</td>
       <td>57.7</td>
-      <td>2154.0</td>
-      <td>1777.0</td>
+      <td>2.15</td>
+      <td>1.78</td>
+      <td>20.79</td>
       <td>0.0</td>
       <td>32.80</td>
       <td>76.45</td>
@@ -735,9 +930,22 @@
       <td>-9.29</td>
       <td>-1.26</td>
       <td>2026/05</td>
+      <td>-26.22</td>
+      <td>-37.47</td>
+      <td>2026-03-31</td>
     </tr>
   </tbody>
 </table>
+<h3>虹光(2380) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxPTDBxSFJTMC1iQmlRUThOcVNYNGIyUmkweVFqNmV2TnNsNm90YmhtOWlvbUdKbjdfOFp6em5sRGlPX2h6M0VxNDVydGRfUFJmdThQbjMxd0VodkxVcF9rZWZZZ0tYUHJmRUVmcW5RbTMxWTF3UVFxRXlSb0M2WWtjNWkxLWtHcDlpbG5rdTVR?oc=5' target='_blank'>【12:02 即時新聞】虹光(2380)股價勁揚近8%，減資題材續發酵＋多頭均線結構配合主力持續佈局 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Tue, 16 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMikgFBVV95cUxQdWx0eGFUMHBNN2hxU3BkNUozb19xMEFJTnJpdjJENmVRU2Uwbi1aajlFR18xSHRqWmRuNlNOUXlwdktnNWtqLU0wRUlrbmRfdHZLTVFuZlJNQ0Q1dDVWNGRoeUIybGdwbkF3Z0NSeVNMeEN1elhrRVhSSGtHMkp5aF95NXY1RVljXzhWZXdpN0t3QQ?oc=5' target='_blank'>虹光完成減資後拚脫離全額交割，評估發CB - MoneyDJ</a><br><span class='news-meta'>MoneyDJ｜Wed, 10 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTE40WDI1VjlMdHNieGxxQ3NzdGlsX0hiZmZpRUZuTnpGazhZRnF1NzF0M3FmenRib25ua2syQ2l0eGNiMGo3dWEyUkdKb09BUFM5U1NUajhjNnRlNlFtSF93YXFXdlk?oc=5' target='_blank'>討論牆 | 盤中速報 - 虹光(2380)股價殺至跌停，跌停價19.35元，成交204張 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Wed, 01 Jul 2026 22:16:21 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE5CeDctcW13UnBqOTJxVmdqOGlQSkdGSmlzbUExQzVzS0l2dlZxSlZHU1h6SDMyUnFxMVhSUWJrcTlHZ1FjeDZabjBEU0k1WEptUEZVc2F3VnE?oc=5' target='_blank'>2380 虹光 - 又抓到財務買6張｜CMoney 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Wed, 11 Mar 2026 07:00:00 GMT</span></li></ul>
+<h3>百容(2483) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9VelJ1czhqRW9PbU1nTjgzS2xWa2dwd2RLLVRsV0NRSjJYNk1VeW5McWtOX0NQVUlqV1RmOVpFbUhCemRrR0Ixb1dEVTI5S0FvRGdnRlhQWW53NGpSSkVUQ3VZVVdtSnc?oc=5' target='_blank'>【2026/06月營收公告】百容(2483) 六月營收1.98億元，表現亮眼、呈現雙成長，年增34.28％ - CMoney</a><br><span class='news-meta'>CMoney｜Fri, 03 Jul 2026 07:10:03 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxPWUV1cXVPQmxmV28zV25lR3F4NXRnRUdxVTNSTkxjRjRjcjdyMGJGaXpYNGhZNEdSRDJWODhrQW5pekZFM2h2SnRXdGxKT25IYk11ZlcxQWlYd2tlWGV0UHFSWjhqR1FnTzRQVDFJSlNzcmFvUkFnVVdxbTBSMTVLdTc2VE0tZHMyMUtqSG9B?oc=5' target='_blank'>【13:30 即時新聞】百容(2483)亮燈漲停至67.1元，AI零組件擴產題材帶動買盤追價＋外資連日加碼推升短線多頭氣勢 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Fri, 03 Jul 2026 05:32:55 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiT0FVX3lxTFBMOGNVVVBoSFVMcDZWbnpHdnBOc0pXV1BMOU05M0hlcGlDMFdvQTd6VVpmZnVjQVM0MDFsaHRuSHZ0bWo0cEg4M1Ffd1hqQzg?oc=5' target='_blank'>盤中速報 - 百容(2483)大漲7.2%，報65.5元 - news.cnyes.com</a><br><span class='news-meta'>news.cnyes.com｜Fri, 03 Jul 2026 04:35:27 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMi5wRBVV95cUxPbW9yWmF3OFhyX05nTG41UGlXOGJUQlhOck40Wm9GbXhKcTNhVnlEOU16a0xBMGN3NWttVm1RelVVXzNCWHZMN09mdWI1RHFNT3c1V0lCYjhhZF9VVW5OR21jS19yaTNyT21WQnZZc29vVHEtdVhJOVBVWURpa3p6MWtjR0R2QzBwMWtyRHJSbXFqT2VBRmhhMHZ0Nk9TQUcwNnV4NmJvSnRDWmJ5UmxrWEJNVjlrb3ZaeExFT0dLbWZ3ZDRpc1U1UjBvMW9qdnYxLUNKT0g5RXBDTzRlV3I4OVU2Q2l3RUhLTXhQbGZHZHAxS1pjeHA5UmlPa0pWUXFXX3VzQ2FxR2R3QWpSWThwTk4xbi1aenk0emtCOGtqYVBsdjRXc2JpbHlucnZaQXRUV0ZxbXBYaXBoajI3RTdxd0FXYk1sbndJalMwRmQwd1FVVFl2T0dsZXRfb01KMy1XRDg5VzduVmttZG9ONk81VnRwRnVHWGdiZk1JY2ZBYjNDWmNVY3hjQ0VvTVNVOG5kSlRLOUMxcmU5SkxfWDI3QU0yQ3NBWW8wQ3ctV3FmSERyZXE2QkFyQW1jRVA3UHNUZ3Vhd0JKb3ltdFl2WkV1N0RwZEdiY2FId1hod1VCMTI5SjRaNXQwc3JqUEo0OUxLazEtRlViS3F3SWlCenhqbjVzUWV3YjZrb0p2WmJiUXo1VjNLMm4wZHdGd3V0bVdheTU5VEhVckZxbS1WTUpRTklZTnIyREQyOXBGVmhqb3ZLYVpvZGJJc2N4cG5VbzExaG5hRVFvblduaGlaVzBjeXk4QW9qZ1k?oc=5' target='_blank'>處置股名單 0630／今日新增 6 檔，中福、宇隆、百容、聯鈞、光鼎、佑華新入列，近期出關個股一文掌握｜股市話題 - sinotrade.com.tw</a><br><span class='news-meta'>sinotrade.com.tw｜Tue, 30 Jun 2026 05:11:20 GMT</span></li></ul>
+<h3>天二科技(6834) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxOMWNOT0U0SXlqU3poaWNwS1dHQXZaU0FXT0NpTHpnRVFnUnQwNUhkNGVEeWJ4TTl4OGRaRGhjMUh5ME01RDllUUE2ZlRWSGRrT1dxaEZULTUxTUp4RDE1em43RWYzTHo2NjNucEdGRXVKcWhYcUtSRkNHYXJsRGRYMy1kZVhvdXB1VVVZMGdR?oc=5' target='_blank'>【13:00 即時新聞】天二科技(6834)股價上漲至127.5元，被動元件族群資金延續＋多頭格局維持高檔攻勢 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Wed, 01 Jul 2026 05:04:22 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9wR0FyVHBrQzNzTEF3WG50OEQxWkdBRFJLSWY5WU5MalpSN1QwWE1LMm41Y1RyWUVUd0FWNEZJQUFDbmVRcjNZeWRwLUpKcm5VOU1qb3V3U0pFNEtxNGltbTFpTkNfMlk?oc=5' target='_blank'>【07/01 申報轉讓】天二科技(6834)董事吳志遠之配偶將於07/04申報轉讓天二科技股票300張 - CMoney</a><br><span class='news-meta'>CMoney｜Wed, 01 Jul 2026 13:10:03 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMib0FVX3lxTE5QeTNNdWEwUnNKbldyb3RxdmF5SGlhb0dRNXNmTmpCTUx2RHNlemNXVzc2YkY3VmVhLU43Z3NlbXVOOE0zblFzWExSMVBMeHc3YW5WVWhHUUhxYzJyeWRjZzFDU0o2NnptSzhKRVFyWQ?oc=5' target='_blank'>5月營收創歷史新高！天二科技連飆兩根漲停 AI 電阻大缺貨引爆產能超載大換手 - 理財周刊</a><br><span class='news-meta'>理財周刊｜Fri, 12 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMikgFBVV95cUxNMU55UlNnVXAzZmNrb1pTc3VkNTBqQU9ZaG01VzRWX1c1eG14Tlg1UGtEZUExdUVpRU1LUW9Hb19rSkUtdjV4ZWZwWTFPSkF1YVhGTlNXeVZQQ3dxalY0dWdqZUhMTjA2cUNTTWZHN1YxSXJxNkMwbU5MdUd5aDJiMDBhem92a1hGM2dhRjVpVGI2Zw?oc=5' target='_blank'>天二科技AI拉貨動能續強，產能利用率近滿載 - 台視全球資訊網</a><br><span class='news-meta'>台視全球資訊網｜Mon, 22 Jun 2026 07:00:00 GMT</span></li></ul>
+<h3>揚博(2493) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiU0FVX3lxTE1vclg2QmdqTDdzWE1RV2VpMFRkaVdNdTQ1M2l4V2w1cUdmZTNGMlpqVXY4TGpOWFEzUUlTUDZqSHVFdTdSYWNJRzFmYVdrU1VfUzk4?oc=5' target='_blank'>揚博(2493) 個股概覽 | 個股 - 股市 - CMoney</a><br><span class='news-meta'>CMoney｜Fri, 03 Jul 2026 13:21:37 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTFBNekFvYkVuSEZObUFnV1oyR2tOT1hPRUEtOUdvbHRhdm11RnZEMzR1elBLdHVnbE9XNWxPekh0SHNkNFh1MlhObDR5M3Qxc3k3UmxTWXNLckQydDlZWml6WXZ3UFg?oc=5' target='_blank'>討論牆 | 盤中速報 - 揚博(2493)急拉6.46%報315.5元，成交4,726張 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Sat, 04 Jul 2026 23:38:29 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxONVk1RzhUQWtnS0ZtNUcyQ3RxNWF4SGxVdGNlY3Jud095alBDRy1PMmVRU3QxTFI0R2t6Tnp4N3VJM3NSM0N4VGF1a0NONks3VkRYNGJFYmdkSnlJdFZfUEtlMmc4eVFOLUJXMjZGblRkR1VBdnZfWlFGbFRJbU5IcFJiRWF1aEttMTFMOWh3?oc=5' target='_blank'>【10:52 即時新聞】揚博(2493)亮燈漲停321.5元，AI高階PCB裝置＋均線多頭主升格局延續 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Wed, 01 Jul 2026 02:55:03 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMib0FVX3lxTE1Ha3BvZUNPd1U3WGZpVWl2NHRORmRvQzJ5NS12R200aUJoTkxiVzdjeHc3ODk1UUwwbDRNbGs2SFNRMTgzb2prVDZaTnZCV3RCQy00Y25kVUNTZm40dVNPMElaX3JLTkYzM09HWDItOA?oc=5' target='_blank'>AI厚板「除水神盾」發威！揚博(2493) 設備材料雙引擎噴出鎖漲停 - 理財周刊</a><br><span class='news-meta'>理財周刊｜Tue, 26 May 2026 07:00:00 GMT</span></li></ul>
+<h3>統懋(2434) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTE1BSzQtS3p6dklTM3VyYkRDMEZlbFN5VzdiSVhZVGVuWm8xUUdMdzhZa3hJUlBLMGV3c09hNWJCbmxLbHNNRGcyWWRyU0pCZ2F3Tm5QLVRtYUFQYTVOdVItVDhkT2w?oc=5' target='_blank'>討論牆 | 盤中速報 - 統懋(2434)大漲7.05%，報56.2元 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Sun, 05 Jul 2026 00:08:55 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxQdEJTZDFFWkJNRUwzU05hSlpUaUFPdEZHUWVCUTBOR2VxQkxuaDVCV3RXYThrNTU2ZkZIelBELWxPa3NMeEpBYjJIbHRzRVlsVk1DTUp1OVpFYnNmd0k4ekUxblViMGptcVR6LWtqOUgzMWluTm0ycS1zMmhtV3lhRmVZcGk3VE1pOGhkZjBB?oc=5' target='_blank'>【12:34 即時新聞】統懋(2434)亮燈漲停至57.7元，多頭資金追價推升＋均線多頭排列、主力與法人買盤同步偏多 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Fri, 03 Jul 2026 04:35:02 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE9DUVJaMXZWZ0xhZWN4Ulo2d29BSFRzV0x6cWFCOUlDS0UwaGxsVTg3NU9jWGNfcTN3V3djdFVTUHVhSlV2VEE0SXl6TjBOX1VDNGVnYlpwYzA?oc=5' target='_blank'>【09:05 即時新聞】統懋(2434)亮燈漲停45元，電源半導體題材帶動買盤回補＋短線技術結構轉強吸引主力迴流 - CMoney</a><br><span class='news-meta'>CMoney｜Fri, 26 Jun 2026 01:06:15 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxNUkZCSjRWSXpGc2FiVElqSk1UUWZLRkVVbzNXSHU1QlBkenV4MVJaVW5lU0FMTktBcFhpYmN0NDhCMFBsb05VVVZTNURLOGNqb2FpdXI2TEtHVFBjd0ZpbGlpT0JUb0Qtd1ZYUHd3cm9mMlJleHdHT09PenlNaTlEbWU0X1JTUXlOUmhwV0hB?oc=5' target='_blank'>【09:13 即時新聞】統懋(2434)攻上漲停52.5元，電源半導體題材帶動買盤湧入＋短線多頭結構支撐續攻空間 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Thu, 02 Jul 2026 01:14:11 GMT</span></li></ul>
 <h2>【造紙工業】內部領漲個股</h2>
 <table border="1" class="dataframe">
   <thead>
@@ -745,8 +953,9 @@
       <th>股票代號</th>
       <th>股票名稱</th>
       <th>目前股價</th>
-      <th>當日成交量(張)</th>
-      <th>5日均量(張)</th>
+      <th>當日成交量(千張)</th>
+      <th>5日均量(千張)</th>
+      <th>成交量變化(%)</th>
       <th>當日漲幅(%)</th>
       <th>近5日報酬(%)</th>
       <th>近20日報酬(%)</th>
@@ -756,6 +965,9 @@
       <th>本月營收年增率(%)</th>
       <th>上月營收年增率(%)</th>
       <th>營收資料月份</th>
+      <th>本季毛利率(%)</th>
+      <th>上季毛利率(%)</th>
+      <th>毛利率資料季度</th>
     </tr>
   </thead>
   <tbody>
@@ -763,8 +975,9 @@
       <td>1905</td>
       <td>華紙</td>
       <td>17.00</td>
-      <td>6978.0</td>
-      <td>7365.0</td>
+      <td>6.98</td>
+      <td>7.37</td>
+      <td>-5.29</td>
       <td>0.0</td>
       <td>2.41</td>
       <td>33.86</td>
@@ -774,13 +987,17 @@
       <td>3.07</td>
       <td>-5.45</td>
       <td>2026/05</td>
+      <td>5.24</td>
+      <td>4.37</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>1907</td>
       <td>永豐餘</td>
       <td>28.15</td>
-      <td>2069.0</td>
-      <td>1915.0</td>
+      <td>2.07</td>
+      <td>1.92</td>
+      <td>7.81</td>
       <td>0.0</td>
       <td>3.87</td>
       <td>11.05</td>
@@ -790,13 +1007,17 @@
       <td>7.53</td>
       <td>8.24</td>
       <td>2026/05</td>
+      <td>13.50</td>
+      <td>13.94</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>1909</td>
       <td>榮成</td>
       <td>10.30</td>
-      <td>10854.0</td>
-      <td>7833.0</td>
+      <td>10.85</td>
+      <td>7.83</td>
+      <td>38.57</td>
       <td>0.0</td>
       <td>7.85</td>
       <td>7.74</td>
@@ -806,13 +1027,17 @@
       <td>12.68</td>
       <td>7.01</td>
       <td>2026/05</td>
+      <td>10.31</td>
+      <td>12.46</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>1904</td>
       <td>正隆</td>
       <td>23.20</td>
-      <td>6030.0</td>
-      <td>4620.0</td>
+      <td>6.03</td>
+      <td>4.62</td>
+      <td>30.52</td>
       <td>0.0</td>
       <td>8.41</td>
       <td>6.91</td>
@@ -822,13 +1047,17 @@
       <td>12.89</td>
       <td>16.52</td>
       <td>2026/05</td>
+      <td>20.63</td>
+      <td>20.98</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>6790</td>
       <td>永豐實</td>
       <td>40.85</td>
-      <td>288.0</td>
-      <td>301.0</td>
+      <td>0.29</td>
+      <td>0.30</td>
+      <td>-3.33</td>
       <td>0.0</td>
       <td>0.12</td>
       <td>4.08</td>
@@ -838,9 +1067,22 @@
       <td>-2.90</td>
       <td>8.38</td>
       <td>2026/05</td>
+      <td>28.55</td>
+      <td>30.70</td>
+      <td>2026-03-31</td>
     </tr>
   </tbody>
 </table>
+<h3>華紙(1905) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE9ZS0pvdmtvVVhYUEZzclVXNEZjRHhRUFJSZ3JOTmFzYlVKQ0NWUUZuZDZhNjFicjVNYXZoZVpKQmNQMlo1OThpX0tPSHYyZkhEOVZVZmRCSWM?oc=5' target='_blank'>熱門股》售價走揚 華紙逆勢強漲 - 自由時報</a><br><span class='news-meta'>自由時報｜Wed, 01 Jul 2026 13:38:55 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiX0FVX3lxTFBHa002S21WRXo0dHdLU0ZxMXRHYVBnWTdyZzJQM1FpZVVINHIxSWpGeFgzaElraDd3c3N2Yk9PTk5sZmw0dFJNNG1rcDdSNUdvZHpjSlhPaG0zZHcwWWFn?oc=5' target='_blank'>耗時10年砸上億元研發！華紙光電玻璃襯紙量產出貨日韓面板大廠- 產業 - 工商時報</a><br><span class='news-meta'>工商時報｜Tue, 16 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMikAFBVV95cUxOS1N3OVhHbDNST0Q4ZVNlMEIzeHg4b1U2b2h4cXpBRGpfSmxOaUNiem5MRmc4NU5TcHJwcDAyWEVyNFZScjhGVDF0YUVURGphd3hILWtibU10cWViT3NWVkltQnRhTzBJaWdOTmxQMmRpYVlKZVViM18yMTU3cnVsTjNZLUNPcTZrNHhRNEZ6N0c?oc=5' target='_blank'>【即時新聞】華紙(1905)爆量亮燈狂飆34%！這「3檔概念股」資金輪動現蹤！ - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Mon, 22 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiowNBVV95cUxQdjNFM2xfYlJUaC1QdWVUZEl0MEtDd01nZjRPalJaemdHb3dJN0wtOFNzUTlYYUZQM096VkZsMVZqbzR2T2NWOGZHRzZXekI4aWFRbHdHTEg3ZDRIb3QxeE84LW9DYlY2dnNxTDBhNGNDTUg0V1F0T2pFWTVVdnJtajl3VEVUSnNQN093cWV5X19XSDlDZHFEcWRpQVFvdVljWXpLVGNlOGczQ0tacVR2Tko4cU1iZU1oVVZCNElCZjY4NmJGd3ZXN0FJQzFabVNwMmtRT1dXU1A1aWhOT0l3X0lTbDJ6OEVxbl8wc2ExcFdrRkYtR2tGUE53SF96ZFVWQ2Mtd1REX3JOVFlJS2llcXBsMWNma3FGNjJlVFlMQjRPbFdfMDdXQjQyN1B4OXJwdnZ1TDdPNl9EdHM0OWh3YXEyamlQTDdYQXdISnFMRHR4RlpxYXFfdDdwY2VZTktrbjRMRHpZZ1F5c0JuRW5CeXdMSVBteldCN3RTQ28wQVBSZFRDVnc5OWhBQm9CWFk1UURRZmJzSmpiWFY2ZmctZHJsMA?oc=5' target='_blank'>華紙連拉兩根漲停！近2萬張排隊等買 爆4萬張大量創近三月新高 - Yahoo股市</a><br><span class='news-meta'>Yahoo股市｜Wed, 17 Jun 2026 07:00:00 GMT</span></li></ul>
+<h3>永豐餘(1907) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiWkFVX3lxTE5OY1M0Q0FWMHA0cFNzc21mOWh4YjZqS0c0VmF4cTNXcDVBX1BCQnFMb1ZBZVhiTnJJZXBmMmxNOXRITEdfTERCUDFibEdnbk9WRU9aSE1BMlBXQdIBX0FVX3lxTFBLVnpRX0dEX3hWYk9qSmxIUE5pZXdVZWg0REw4eEJzNHNrc1JfQ3dYYng3a1NNamg3b1dFVGVlakl0SDJuZ0d1NlFLdmpIM0FMaVlxdVphR3I5WW13bXow?oc=5' target='_blank'>永豐餘攻智慧能源 報捷 - 經濟日報</a><br><span class='news-meta'>經濟日報｜Mon, 29 Jun 2026 16:49:35 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTE1UUmZnd01vaTJoLTJBQ0JkazVOcjQ4SWZOUHNLaVNBMHAydk1kclNhRTViTWMya1dZVXdweXFjUG56RXhlVzBpZmZRLTJ2VGJwbG4wTnY4VXM3bnpjQnhIUzJiU0U?oc=5' target='_blank'>經濟部推防災型微電網計畫 永豐餘旗下永餘智能取得嘉南兩大建置案 - TradingView</a><br><span class='news-meta'>TradingView｜Mon, 29 Jun 2026 07:19:45 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE1DSXczeHVHaWItS01WLXpYMDlvc1hNWnl2ZlM1bkM2ejV5c0pqaUFNR25qU2FlRjdadFQ0bzY2MmFaT2thbW9ZdFd5bVFrWlhRNkpNcnQ3Rmg?oc=5' target='_blank'>1907 永豐餘 - 無懼天災建構72 小時不斷電防線！永餘智能奪嘉南微電網兩大建置案- 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Sun, 28 Jun 2026 20:53:18 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMivANBVV95cUxNQVVoQmFOck01MEs0T2FKVjBINFhMZ2lTb1dYUWVPUnQ3VGh3NGtQVGRhRGdwaTdqdkxTaVd5RXlsUnc1TUxicFlrQ2lCS1FFUnZwa1ZxNjFiUDlVMTliMU5jQ0lIM1EyQ2hMWGhTdW1jMXd3YnNuTHRTSHpqaG1haWZsLUhqZXU2d09JT19lcEpPNFVXbFZVS05JMW1tUV9jTVh0QWYzYXd1N0hvd0g1UkU3aWdFSFRDZnRIWEdBaWVyTjYxQUZrMFNMVE5KWHgyM1R3aW41anlhZzZETXFqSktlWFJMeS1FZFh6ZUV0ZHVwaUVOaXFVcFQ1ZHRDbmJfaFNac3JHMjRiTkl5Sk9yM0J4cjI5UHlzaDFXNzQ0N3VqclVPUXJ1T0VUZnFyaWFGcmY2dkxUdHRIcERoUHRVTldjaEVxb1ZBZVdCR3IyTW9sYWtfaFEtUmdoTEZSNnhGdGh1ZTJYZlAxeWJ2WXl5eWFVWEk1SjlvaEZ0azNXeF9lV1NSMmNUUmFJcDJzeHBLQVM3VkVHTDRuNU9fU1pfMGh1WlBsYXdxaDlTb0ZORzZBc002TmlPS2gxS1o?oc=5' target='_blank'>美伊戰事見曙光！造紙股6檔不跌反漲 永豐餘一度漲逾2% 專家看法出爐 - Yahoo股市</a><br><span class='news-meta'>Yahoo股市｜Sun, 14 Jun 2026 07:00:00 GMT</span></li></ul>
+<h3>榮成(1909) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE9aYjJQMXhLdmxxY2thOWoyQVF5bE12X2ZYU2Q4RkhKaGNiQVZSZ3Z3cEkxMVlsQmwxTnExYldzeHpFTmNPckkxYUJsSVUtWVFGUjlYQU5YcS0?oc=5' target='_blank'>1909 榮成 - 郭明鑑兼4家公司董事國泰金投資及授信踩雷風險攀升- 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Mon, 29 Jun 2026 04:01:35 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxQUk5lVDNxdWlBbzJKV1NqbzBwY1ZRNlZUeEotUlBpemlZQWl4VHBwRzVSeU5iQ0ZzeGNwTHhOSmRNSXpScy01ZlJwcG04aXFNWC0ta2puVW5veWxqbjZJaU10RDI0NzhrZFd6cXZmNlZRX2pYRzI4ZzV3eGxCVlJBQjFaX3FfVUFlTnFwcFRB?oc=5' target='_blank'>【13:04 即時新聞】榮成(1909)股價上攻逾6%，受汽電共生售電題材點火＋外資連二日回補帶動技術面轉強 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Thu, 04 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMikgFBVV95cUxOUjJzMlBlcVVTeXQ0Wm1YNllPbzFWX1ZTTUQxMW9oZnFib1A3WnNOY1NROW54M1JwQld3QWFKclpnS3VOZGFvdnJBQ01RUHVGUHpVVmZObFNqaEJ6V2xZTkdOdnZyWVlBYm1lTnlCZHRINnlNenp3aTNHZ2liYW5EUHdzY20tdUJ6MWk4YTl6QVd5Zw?oc=5' target='_blank'>榮成構建智能製造，未來3年推動應用AI落地 - MoneyDJ</a><br><span class='news-meta'>MoneyDJ｜Thu, 28 May 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiUEFVX3lxTFBqbGZ0T2RqRjNlMThTZ050ZDBEYkc1c2RoOTlFSXNEc2Vhb1dBbHJfYm9aWkFZeWI0TXhFSUNuMGVZcXpUaTlYaHRpa1hFNzA00gFWQVVfeXFMTVBmVEQzSzRQSHJRdDhDNE1obnE5aFdGTi1kOG5ONTJBd2MzeVBRRkprNVdIcTV6cE8zUVRBVXp6WkstblFidndocHBTMmpoV3FkaVUyeHc?oc=5' target='_blank'>榮成股東會／完成董事改選！國泰世華董事長郭明鑑入列、評估控股轉型 - UDN</a><br><span class='news-meta'>UDN｜Wed, 27 May 2026 07:00:00 GMT</span></li></ul>
+<h3>正隆(1904) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE1CaHhpeVR1anNraWszRkY3dTBUcWxyYktXZGhCOElPYzViWDdxSjZjbWJhSFByWUM1T1JOczFfMXA0UlFzQ0tqVVFVVV9jNnFTa3JyZzl0Uzk?oc=5' target='_blank'>1904 正隆 - 今天是專門分享給正向朋友的，比如我會在你的底下留言就對了。 ... - 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Fri, 03 Jul 2026 23:34:25 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxOSGcxTWYtMWhHMG5zV0lXNFJqVVRreDJCUTJJVzdmMmh6enZ1MlN4MGVGbW9hR2hOM2stU0luR2dNZ2w1WHA5Y08tOGVtNUVDNFU0OGxVMWpFM181Wm9GaWlUbkZFWWgtT1Q3ZEVISTBkSHVzUmFZNmg0R1NBZHlOWFptYTVRTjB2SlRvUjJB?oc=5' target='_blank'>【11:23 即時新聞】正隆(1904)攻上漲停22.3元，受汽電共生售電與綠能題材加持＋多頭均線結構搭配法人與主力連日加碼 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Thu, 04 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTE93MEdZNDA1X2F0M1JxTWJLWi1ueWhsa1RHWHZCdlJQbURBUU5UOHh2T3NJcHlKSm9Jby1PVjl2clBSXzZvdXg2XzljaEZQZlRuaEkwREtmcTUzTlZpRUVuTWoyYmE?oc=5' target='_blank'>討論牆 | 盤後速報 - 正隆(1904)次交易(22)日除息0.45元，參考價22.65元 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Sat, 20 Jun 2026 10:03:49 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTFBBRXYtY2VmQ0NvWTNWOW04Njk1YnlJUl9PQUtzbzZBSWl0a3Jyb3ktVDBXcnpyUUdPVjlaUHk1MTVCX3gyeEE5Sm5CNDRHU05sVGlIS3d5eng?oc=5' target='_blank'>1904 正隆 - 今天秀小賺小賠的～ $$ 正隆淨值 26.8 6／28台北... - 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Thu, 02 Jul 2026 04:59:03 GMT</span></li></ul>
+<h3>永豐實(6790) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiU0FVX3lxTFBfYld3R2Vwdy1DVWU3aVJKMFVadDlqTEhKVXZ3d1NkWEVyblNYbHZVUHlmN1ptc1QwMnl1NlRZcXlHbEJKNG0zLTg3d1dqY1ZaTjU4?oc=5' target='_blank'>永豐實(6790) 個股概覽 | 個股 - 股市 - CMoney</a><br><span class='news-meta'>CMoney｜Wed, 17 Jun 2026 21:15:24 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiUEFVX3lxTE1IOWVCcWNUOGc5Z25zMHY1SFN0TGlYZEdsYW5UblMyUU16OVc3UldJVlp6NHpQTkRYcGE1c3RjOTZybTR4WlRrQU94TVlKdjVJ0gFWQVVfeXFMT1BGM3R1ZVIxT2g2eTRjbnVoUk5aU2N3a1NyVVBMR0ZvaE9VVGsyVDNCOTIzbmxPMzlTRWw5Q1E5WVVuam10NVVPOVpoVDFiZDV0R3FxWEE?oc=5' target='_blank'>永豐實去年EPS 3.03元 衝刺新品 - UDN</a><br><span class='news-meta'>UDN｜Wed, 25 Feb 2026 08:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZ0FVX3lxTFB4MDRpUGNEUlNrY2N5WTRZQ1FqNDFRdmJiNURNVXY0eEo1OXlHZ2I2WW5GbS03NEdReXFyZUdHbHI0blVQMkc1RXBfS0VWakJia0NGVFhsN2pfMERFYk5XdUJpaXdoUnc?oc=5' target='_blank'>【永豐實法說會重點內容備忘錄】未來展望趨勢 20260226 - 富果直送</a><br><span class='news-meta'>富果直送｜Fri, 27 Feb 2026 08:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiigFBVV95cUxOaW8yTzQ5NG9uZHgxbHZhNkltWjl2Wm5sV3BSZUNKSWJvRnVXcmhZTlZ1VEtHSFJLNjVUcjlwOEd2cVhWUVItYzQySlpad081ejNiNDNCMUxvOXUzMVF5X2UwbEdoNDA5Si1oNlRQbm1YakJieHZ4S0JjTzJRMFlNQWZ4bFRJSXh3LXc?oc=5' target='_blank'>【2026/05月營收公告】永豐實(6790) 五月營收8.97億元，營收雙減，年減2.9%-CMoney 小編 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Wed, 10 Jun 2026 07:00:00 GMT</span></li></ul>
 <h2>【光電業】內部領漲個股</h2>
 <table border="1" class="dataframe">
   <thead>
@@ -848,8 +1090,9 @@
       <th>股票代號</th>
       <th>股票名稱</th>
       <th>目前股價</th>
-      <th>當日成交量(張)</th>
-      <th>5日均量(張)</th>
+      <th>當日成交量(千張)</th>
+      <th>5日均量(千張)</th>
+      <th>成交量變化(%)</th>
       <th>當日漲幅(%)</th>
       <th>近5日報酬(%)</th>
       <th>近20日報酬(%)</th>
@@ -859,6 +1102,9 @@
       <th>本月營收年增率(%)</th>
       <th>上月營收年增率(%)</th>
       <th>營收資料月份</th>
+      <th>本季毛利率(%)</th>
+      <th>上季毛利率(%)</th>
+      <th>毛利率資料季度</th>
     </tr>
   </thead>
   <tbody>
@@ -866,8 +1112,9 @@
       <td>2466</td>
       <td>冠西電</td>
       <td>86.20</td>
-      <td>4573.0</td>
-      <td>5682.0</td>
+      <td>4.57</td>
+      <td>5.68</td>
+      <td>-19.54</td>
       <td>0.0</td>
       <td>32.82</td>
       <td>95.91</td>
@@ -877,13 +1124,17 @@
       <td>-33.25</td>
       <td>-27.21</td>
       <td>2026/05</td>
+      <td>7.19</td>
+      <td>-4.21</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>6226</td>
       <td>光鼎</td>
       <td>24.00</td>
-      <td>7275.0</td>
-      <td>5560.0</td>
+      <td>7.27</td>
+      <td>5.56</td>
+      <td>30.76</td>
       <td>0.0</td>
       <td>8.84</td>
       <td>87.50</td>
@@ -893,13 +1144,17 @@
       <td>-2.13</td>
       <td>17.33</td>
       <td>2026/05</td>
+      <td>30.15</td>
+      <td>28.70</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>6164</td>
       <td>華興</td>
       <td>17.40</td>
-      <td>3884.0</td>
-      <td>3682.0</td>
+      <td>3.88</td>
+      <td>3.68</td>
+      <td>5.43</td>
       <td>0.0</td>
       <td>32.32</td>
       <td>39.20</td>
@@ -909,13 +1164,17 @@
       <td>28.04</td>
       <td>-25.90</td>
       <td>2026/06</td>
+      <td>30.28</td>
+      <td>31.72</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>3481</td>
       <td>群創</td>
       <td>66.00</td>
-      <td>300757.0</td>
-      <td>383244.0</td>
+      <td>300.76</td>
+      <td>383.24</td>
+      <td>-21.52</td>
       <td>0.0</td>
       <td>-3.93</td>
       <td>36.50</td>
@@ -925,13 +1184,17 @@
       <td>10.28</td>
       <td>11.79</td>
       <td>2026/05</td>
+      <td>14.43</td>
+      <td>9.08</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>2406</td>
       <td>國碩</td>
       <td>41.15</td>
-      <td>26785.0</td>
-      <td>50137.0</td>
+      <td>26.78</td>
+      <td>50.14</td>
+      <td>-46.59</td>
       <td>0.0</td>
       <td>-1.56</td>
       <td>28.59</td>
@@ -941,9 +1204,22 @@
       <td>121.20</td>
       <td>143.29</td>
       <td>2026/05</td>
+      <td>19.19</td>
+      <td>11.28</td>
+      <td>2026-03-31</td>
     </tr>
   </tbody>
 </table>
+<h3>冠西電(2466) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTFA2Q1oyaUNQVFZDM0V6RUNQdHQzUmJDRlFfbF9jTllsTVQ4TnExS3lkNGg2NjVOTXk3bFpnMnEyaFVIRmdIdWVldFI3bUh1TkpOanlBdktHREdnMmZKY2J6RXNISkg?oc=5' target='_blank'>討論牆 | 盤中速報 - 冠西電(2466)股價拉至漲停，漲停價86.2元，成交562張 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Sat, 04 Jul 2026 21:06:02 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxOQy02TUR1bGpZdWM4TTlxR1Npa0tJd2lHRi0yYTNtc1lGbC0xdXlBdENkV0tzUFpfaUhQWk9UMDRWLWhock5aVlQwcTlmNk1BT21TdlVlQVllZmRWbDRiNXpmY1JRWk9GUG50d05lcE96a3BMUDY1eEFnU3BuUmp2ZlZYWks4QWpUZ1lvNkln?oc=5' target='_blank'>【09:20 即時新聞】冠西電(2466)亮燈漲停78.4元，題材資金追捧疊加法人與主力連日偏多推升高檔動能 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Thu, 02 Jul 2026 01:21:05 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTFB4a1NDUklicXk3VDIxTW9wa2RES0NndDVpbmZPNTBicDdfbXBSeExRNV9IYjlubjFYUVZJZUt4ZXBxd1oyX2xfcUdfT3RIQzNTRnRUeUtHNzY?oc=5' target='_blank'>2466 冠西電- 期待下半年表現，加油 - 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Fri, 03 Jul 2026 05:50:16 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxPMXEzc2ozNHU0azJSakRuQzVlYjFnNG5VVHRvVmVfeTlOWDdTMWFqYndEY0ZldkVtcEZRbHhJU2UxM2lzT1o0c1N0TDVsM1BsYzJpZml0VDhaVkNQNHlPdl80TzlGSXZsUk0tWUJOakFtcklMazI3b1h4VFFpU1E4aUI5YzNwT2RuM21kSzZR?oc=5' target='_blank'>【09:26 即時新聞】冠西電(2466)亮燈漲停至86.2元，機器人與光電題材帶動買盤湧入＋短中期均線多頭排列、主力與三大法人連日買超支撐攻勢 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Fri, 03 Jul 2026 01:26:47 GMT</span></li></ul>
+<h3>光鼎(6226) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxQYmUzMkdNN0R0OHRDSm84NkxyZmgxR2owdVV3QndtTkl3U0pCcUM2X2pRd3dpR2d0WGFORUNDVGpfZW5LVHF4SGc1VFdVal9JS0pKNl82ODVaSVZLUlRSRjc4a1ZtUDNtcE12d3pydTk2ekw5cldUWjlhUGVqM1lTNUI5Y2t2SFh6ZHNNLU1R?oc=5' target='_blank'>【09:00 即時新聞】光鼎(6226)亮燈漲停至26.65元，受LED與AI邊緣運算題材加持，短線連漲後技術過熱、主力與法人籌碼轉弱成關注焦點 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Thu, 02 Jul 2026 01:00:20 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE0xQ2FGT2NsM002cFk3NngxYUNZcFRYQzQtREdySG1LT2UtLUdqUFJQcVVLLUN2Uk1mcGRNN0s5NTJLZUxGMnpZbkQ3QXVuRW9hRXlGWHd6bWI?oc=5' target='_blank'>別只看LED！光鼎（6226）真正的轉機在這裡。 - CMoney</a><br><span class='news-meta'>CMoney｜Mon, 29 Jun 2026 02:12:27 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTE5PYTZHV2U1RzZMcFYzV3BPNGQyMFA5UzBfNTlGcV9hM041MGcyZmFnclkwQVVHWGVuUGRMU2pXd0E3cHdkQjJPYVBFQ0RMQUJIWDUwQTEwcHJSVFpITUNzZVZWSjI?oc=5' target='_blank'>討論牆 | 盤中速報 - 光鼎(6226)股價殺至跌停，跌停價24.0元，成交4,929張 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Sat, 04 Jul 2026 15:08:31 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMipANBVV95cUxQUmMwVjVSTDBQOW4zY2pKYmdRY00tOHN3MTBrYm1IMzZXVmwxSHdVeFdHMURWRU8xclFVdDMtN09GV2hpZ1NOS05UQ3NGVlR6RkxBelV0OWFQWEpMWU9qak5fR1ZLa3dhV1dxa1l1REhtRFVTZFFvTUx5VHMteEFST3F2Mmx1N1Zkd3lUVjd4MHhCZVlTazBXb0lMY09fR2tkWHdSby03VXRlWHdNaGItOTZYTW5LRXFMdklGOTgyNVE3RTlpWER3M2V5YzJsNVJJTTkzdko1azMwX3JIWmJORmNDc28tY2JXWXJTUktCTjVTNm05SGpVVmtXSjZObmFXQm9hd291Rnd5eGZxRlBLcl9WNks0d1VtUGF2cHowc3FDcWk2d21OU2RYMHNaU3NPSURkeWRRakxhWU1xNWJhOUdRTHBVbEg3UWZ4UGNnT1FDNlBid3RaRExoYzJTUGQ2QW9xWUY0bTQwbDl6WHdsSHNNMUJINVFJc3NickFrTXUyMjkwSzBfcWNKcUtib1VFVkNyMERQbG13N3VIR2loQ1lyeFo?oc=5' target='_blank'>光電股紅光熠熠！「這檔玻璃基板」攻頂重返百元、國碩、光鼎連飆漲停 「這5檔」也都亮紅燈 - Yahoo股市</a><br><span class='news-meta'>Yahoo股市｜Tue, 30 Jun 2026 12:45:00 GMT</span></li></ul>
+<h3>華興(6164) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTFBzUG1WRjQ0NFVkdnR1OS1PNUdLd3Q4S21MbG14RTVQdjIxLWlYYmg3b2lHLXNWa3hRWC1OWWx6ZzlUR1ZyS0VYdUhxOWxhSHdqUWRvcndwa3JySmZILVV1TW1KU2g?oc=5' target='_blank'>討論牆 | 盤中速報 - 華興(6164)股價拉至漲停，漲停價17.4元，成交1,929張 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Sat, 04 Jul 2026 19:35:44 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxQVm9PUmxHTF9PajhlbkdDbk1OODl5dk9DNU9WYkNLMnpBUGlyVjFUVi1RcFBpWHVFeE1pUlFUeXpjNzhKYmNQcDcxQ3JMTE1XTGl4T3RwaFYtY2MtaVNaOFhfRHhPX1YwVW9fRWdBaUVBR0Y0eDVPRHd1NlU2VGd3UUs1a21wYW5wUWctcmln?oc=5' target='_blank'>【12:04 即時新聞】華興(6164)股價勁揚逼近漲停，營收由弱轉強＋主力、法人同步偏多支撐續攻空間 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Fri, 03 Jul 2026 04:07:43 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1xazQ2d0tFaE5ZXzQzSDJGM2EySWktVUx5UUY4aDJpWmN2alRZbDJhNXpObXFleWF1ZkhSSkZtaXBnTGFWMjUxUTk2Z19Xd0tkaTdGVmRnS0JReHBEWWgyUnpwUGVIdWM?oc=5' target='_blank'>【2026/06月營收公告】華興(6164) 六月營收表現亮眼、呈現雙成長，年增28.04％ - CMoney</a><br><span class='news-meta'>CMoney｜Thu, 02 Jul 2026 09:40:03 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxQWDgzcnU5bGJsZGFJVDRSSnlPekZBenUxV3VSdUwxMnlxdnVEQ3VwSlBGUkJZNnpSZElWblBwX3IzR2ZUZWVqTERtMlNoWVVkM3hTZTJjOFI5cmhxdUhxM1M0VEZVVTd5bVUxU0UyeDduZDh5TkVhejZDTy1zVm41SExNRlQ5VzRfX3dScjh3?oc=5' target='_blank'>【11:00 即時新聞】華興(6164)亮燈漲停至14.45元，產品結構優化題材帶動買盤，短線突破13元區間增添技術面想像 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Wed, 01 Jul 2026 03:01:49 GMT</span></li></ul>
+<h3>群創(3481) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMi6wNBVV95cUxNZmVBdkZxc3Brcl83QXZETnJtM19QbFM0SWVkM0ZPRW9KODQyazZWVDlGYlBON0p6YWJEcG96a1JxS1FGVWt4YVRBQXNrd1NYNVBJdFU2NjdreXdZWFFiNjF3dG80VnlGV25YemU5V3YxNm95WlNoWGQ3TGIzSVRhQ2s1dmlIdmFHd0Q2b1lkXzctMVh5bjJMdkl1Y0ZvVE1BYUpMUFBzZ3E2Y0dTV3FveGNPeFI4Z1d0NF8tTnNkRkRPR3FyQ2xFTHJfcnB1RzBaSFR4ZXYzanJLQlkyUEZFcFRRQkpVWGd4czl1ZFkyYlBKNkNQQVlYTWxQNnY0NnlCWnIwTVdLRXlPNjc3dGh4N1FFNzJDZVFkYkNMSzNOWF9Kb3FiMDdUOHg0R3kzamlCbGpid0ZYUndBX2FXelZVQ0dTVGJkWi01MEswVU40R0hScUZHWXhobjVvWkc1eXp2RkhNOTVNbmNaVnpxeHdESHc2S1A0T2ZfOE10dXpNV0Z4ZUVOdTJKZ0ZtZUVsVXhvMUlBMFdpSWVLQUZjai1BTUU4QzhQUEYtbk9NbEZoUXBmWk1ENV9GMl9udjlPSkFKVzlSdGdUaDh3WTMtRDA1c2YxSk5MZkZQZ000d3c3UzBuaF94Z000cVdJNA?oc=5' target='_blank'>單月獲利年增2654%！「面板大廠」股價已飆287%、自營商6月砍破萬張 記憶體三雄也淪提款機 - Yahoo股市</a><br><span class='news-meta'>Yahoo股市｜Sat, 04 Jul 2026 23:50:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE1Ec3g0RlpXcm9HZ3VEWmxiNkFkRXZoTklqeGExZTRJeUNsQmtTd1BqdXBYSFFBVUFscTdBeUtCZ1BGeEJabmNfdmlfM1gxVFhucUpHSHpiREE?oc=5' target='_blank'>3481 群創- 6/18 來看一下今天的資金流向： 群創/華邦電- 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Wed, 17 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMigAFBVV95cUxOTWZaYlAtaFRVd1ZuSFBBZldRSUg1TEp6SXVyMmtLM1BmQkJGRnNGaDRCWHN3MlB0cTA3VjlVamJiR2NiMG5TNHN2R2o5U3MwTk5vOXdRcTdhNnAtb2ZUMkxtbGppNUpGTGc4cUdCc29OODloZ01yWDFmWG9xajZRRw?oc=5' target='_blank'>台化(1326)亮燈漲停，群創、聯電還能追？杜金龍：我頭殼沒壞掉當然不賣！這檔「便當股」股價很容易就噴出去了 - 今周刊</a><br><span class='news-meta'>今周刊｜Fri, 03 Jul 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiUEFVX3lxTE5vaWN5elBMcFBsLTlwNE5KejlhSmMtWWJSS09kLTVDREdNNEtEZlBxdWVrTjktaVBoak9NdWdYMjdCQVJWbENVOS1VUTNHMXJX0gFWQVVfeXFMTlV1WDhaTzZiOWpuaU4xSlhVUDBiNlVTQVNZZWFVWFJEX2I3aW4wTi1JdWlWQ3RobVJSVGF6aXo2WTJ0VWFzSkp5UGxaX3RTVTlZdEhBbUE?oc=5' target='_blank'>外資調升群創及友達目標 群創進度領先 - UDN</a><br><span class='news-meta'>UDN｜Wed, 01 Jul 2026 00:33:49 GMT</span></li></ul>
+<h3>國碩(2406) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE4yTFZnNHM3SGE0WjZaRy05VVYxdmtDbWgtdTRSeE9xRnl3OHRJSDVNMEN1T0NDdU4wc0NTbFN3Wi05S3d0SUdaNEVKNnVZNHV4TW5aVUJHTjY?oc=5' target='_blank'>2406 國碩- 國碩- AI液冷散熱，鈣鈦礦，再搭被動元件- 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Mon, 29 Jun 2026 14:31:19 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiwAVBVV95cUxOb1RjazhXRm9TOGJjSlpEQnJGNHRXZnJxNy1kTGtWNEY3SVBYSFhhdGQ4WTVqNVB6d3QzZE52YTBTWnhPS09KbmRyZ25HMF9qdFNhX0lIaW1aUFJYTThPMUdFdUVBQm1KUUktbWFZZFp3SnZQMXA2Z3pWMEZZX1Y5a1I5eWxGMzNGZ3lHY0JITEpBTm5yQWFxWDRFQU16eUpEOS0zMTVnMWhhM3g4YnIwYmtqZ042TTBob0h2LXFfTWdzMmVrTnBaZU5jVGp2S2JHVG1OZ3NoelFlRDR1SVJDTE5TVkhpaW9tWnR6T3M1RlZXeDBDTThGdHN1VEVmQl9xb1Q1UHA0cy1jTU1LU09nc2F3M29mUVN0R04zQ3dnNm9CUElaaFNuWmdMclpOR1FySFVNdzhSTjZOLWRXcHNDX0phNVdGQnVhMm9LTHRrVHl4ZHVIbXJtU2d3UmJ2T1NwRFExMVlMWTREVThwV0pkQmR4emg0eVh0bU5KejVjNnNvMGtvOUtaRlgwbV8yU1lZWS1ubV9rLVBaRkFHVzNlS1VmWHJEbmNJbTBFeGtPOHdCWUFtcldtN2x0eGhjMDFJS3VZOGVTSlhtaHB1MGRWdUFKZDB2b1FFY3JXRjNucDhER0U2ci1FOGJDOWswUmpfeUpLMVgyV211aUtkb1ljZm9NX3FwMXpDeUVWS1M5TUp1ZllmOVZpbXJReXpUMU1Lc2FnbmxIMGN2elpoODE2NVZQOENmWS16cEVOS0YwVklpdFZlMnNWdERHYkEwR05iZEtRWWlTZ3pEVnNlWXZ4TEJkZFRmMHVFb0syUlNmUk04ZVQzaVZCc2lodGcyd0ZvVU1TNHQxRVlLajZGQ0lneHRLZ3RCcG42Ry1acDJQeWpyUXRUWFNvNFpQSjZzdzIzRG1DaHh4YnlOcFBDamZNUw?oc=5' target='_blank'>【0701台股盤前】大盤跳空強彈1126 點，自營商與法人多頭齊發，矽晶圓、EG 與載板三雄領軍衝鋒， 主本比排行:友達 2409 ｜國碩2406 ｜雷虎8033｜豐雲學堂2026 年 07 月 - sinotrade.com.tw</a><br><span class='news-meta'>sinotrade.com.tw｜Tue, 30 Jun 2026 23:45:26 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiUEFVX3lxTFBIWkFFMm5jM2lGZVVFQUFKaGE2c2NlaHdkbllod0xFcU5pYWpZTWphZ0VCUHBURWRJWGIzRFpMMm8yWjJKZl9pS3g3dU41OU1W0gFWQVVfeXFMTXQ5TFhxN3Uzb2pwazRIOVN3a3Q2TFhDc0lRbXN5XzVUMlBZVzVnZ2NCZVE5NVRhaVEtRE5ETm9ZeC1vRnM0ZUhpMlI4bERXMHI5R1hjbFE?oc=5' target='_blank'>國碩強攻三大商機 - UDN</a><br><span class='news-meta'>UDN｜Sun, 28 Jun 2026 18:00:45 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxPMWNvcUlDWDRMX1VpT0ZLYXpheVBPVFVyUmxnMGVWejA5MXpxMzZXQllSSGtoQjlVb0tfYXRDd0JjVFBjLTQxVHp0aEx3YmhCZWV6RzJNNDJsMkI0WG1SbmNwWXIzWXRIanVDc3FvX0VxY296Wm1PR3pzdzhYZXY2VmRhdWhlUkVVNWxkNnR3?oc=5' target='_blank'>【09:35 即時新聞】國碩(2406)亮燈漲停41.8元，被動元件＋矽晶圓題材發酵，主力與法人買盤集中推升多頭結構 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Tue, 30 Jun 2026 01:35:35 GMT</span></li></ul>
 <h2>【汽車工業】內部領漲個股</h2>
 <table border="1" class="dataframe">
   <thead>
@@ -951,8 +1227,9 @@
       <th>股票代號</th>
       <th>股票名稱</th>
       <th>目前股價</th>
-      <th>當日成交量(張)</th>
-      <th>5日均量(張)</th>
+      <th>當日成交量(千張)</th>
+      <th>5日均量(千張)</th>
+      <th>成交量變化(%)</th>
       <th>當日漲幅(%)</th>
       <th>近5日報酬(%)</th>
       <th>近20日報酬(%)</th>
@@ -962,6 +1239,9 @@
       <th>本月營收年增率(%)</th>
       <th>上月營收年增率(%)</th>
       <th>營收資料月份</th>
+      <th>本季毛利率(%)</th>
+      <th>上季毛利率(%)</th>
+      <th>毛利率資料季度</th>
     </tr>
   </thead>
   <tbody>
@@ -969,8 +1249,9 @@
       <td>2243</td>
       <td>宏旭-KY</td>
       <td>65.9</td>
-      <td>403.0</td>
-      <td>436.0</td>
+      <td>0.40</td>
+      <td>0.44</td>
+      <td>-9.09</td>
       <td>0.0</td>
       <td>15.61</td>
       <td>137.48</td>
@@ -980,13 +1261,17 @@
       <td>16.98</td>
       <td>15.41</td>
       <td>2026/05</td>
+      <td>15.46</td>
+      <td>22.27</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>4551</td>
       <td>智伸科</td>
       <td>265.0</td>
-      <td>956.0</td>
-      <td>844.0</td>
+      <td>0.96</td>
+      <td>0.84</td>
+      <td>14.29</td>
       <td>0.0</td>
       <td>17.78</td>
       <td>89.96</td>
@@ -996,13 +1281,17 @@
       <td>26.74</td>
       <td>18.38</td>
       <td>2026/05</td>
+      <td>23.48</td>
+      <td>23.25</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>2236</td>
       <td>百達-KY</td>
       <td>184.0</td>
-      <td>2157.0</td>
-      <td>1984.0</td>
+      <td>2.16</td>
+      <td>1.98</td>
+      <td>9.09</td>
       <td>0.0</td>
       <td>25.60</td>
       <td>36.30</td>
@@ -1012,13 +1301,17 @@
       <td>27.34</td>
       <td>5.20</td>
       <td>2026/05</td>
+      <td>13.57</td>
+      <td>8.48</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>3717</td>
       <td>聯嘉投控</td>
       <td>28.9</td>
-      <td>7894.0</td>
-      <td>16565.0</td>
+      <td>7.89</td>
+      <td>16.56</td>
+      <td>-52.36</td>
       <td>0.0</td>
       <td>5.28</td>
       <td>34.73</td>
@@ -1028,13 +1321,17 @@
       <td>-</td>
       <td>-</td>
       <td>2026/05</td>
+      <td>17.27</td>
+      <td>19.34</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>2231</td>
       <td>為升</td>
       <td>118.5</td>
-      <td>5818.0</td>
-      <td>4809.0</td>
+      <td>5.82</td>
+      <td>4.81</td>
+      <td>21.00</td>
       <td>0.0</td>
       <td>17.33</td>
       <td>24.61</td>
@@ -1044,9 +1341,22 @@
       <td>-24.07</td>
       <td>8.16</td>
       <td>2026/05</td>
+      <td>36.71</td>
+      <td>23.65</td>
+      <td>2026-03-31</td>
     </tr>
   </tbody>
 </table>
+<h3>宏旭-KY(2243) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTFBveWdOck4zay1EQkhzaUVhdnJ2TkN1NWJiNGhkOUVRSVg5Y3pVVU5pUU0xck91SnFROWhSYURybmNrajc1TUZzOEFnbGl3eExsbTE2THdGelc?oc=5' target='_blank'>2243 宏旭-KY - 房子換股票發財了大家快換- 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Thu, 02 Jul 2026 04:07:40 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiX0FVX3lxTE5fRllwaktOOFNjV0hRclplUXd2cmttcTJJbHFlTGExX0RQM0ltUzdaeG94M09SXzUzY2JkWW5RMTFBTHVvMGc5akRDWjh6R2ZHZXZ1dmhQQlFCODhsY3Uw0gFkQVVfeXFMTlkySUxSbXlEVE9FZ0NmRURNRlhmUk1VcTN3dnoyblRrcElKTmQyeUJiWHZwdHJWR3N0UjVZSDNIQTY4Rm9ISlFveHpqYWVyenJ4Nlc3YXVrTWl1VWl3WFlDMVRYbg?oc=5' target='_blank'>焦點股》宏旭-KY：每股淨值回升至票面上 強攻漲停 - 自由財經</a><br><span class='news-meta'>自由財經｜Tue, 16 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTE5RSkZCS2diRlFzYjBObnYxYkJIZ0NKSDBYY3l5SXJpZmRuZmhvdmk4b3VPdGswSWh6MmgxUGlSRHFKLUNQS3E2VTk3TEp3MzBaTE94NHJ1ZVloUTE0OWQtSWh1XzI?oc=5' target='_blank'>討論牆 | 盤中速報 - 宏旭-KY(2243)大漲7.02%，報61元 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Thu, 02 Jul 2026 13:11:42 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxNX0xaLXpyeWZhd2V3TnIyQm1NdWJIcDhhbURvUlA4ZGVGR0xrS0VVcXN3aVpCVk94WmZmMXNacVhaSS1DOU1RbWVHTW56a242amM5U056d0NKNWlZR0lyOFM0QTJwNnpvWnpwZHFXVmR3a0tRRnNDckRpXzhubGhyZjZ0bmRmd0podThvM2RB?oc=5' target='_blank'>【09:55 即時新聞】宏旭-KY(2243)亮燈漲停51.7元，融資券恢復題材發酵＋外資與主力連日偏多點火推升 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Thu, 18 Jun 2026 07:00:00 GMT</span></li></ul>
+<h3>智伸科(4551) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxQMFNUWUYtcVN2MXYwNFhlWEFFa21QdWllN2lPcDk0RExfNFYzZ3RYSVh4MUVFVTB3cnhZckNjSDR2VmRWMlFGSm5idGxPdHp1dlE4Rk1CZXh0OXNRQ25ESXJtcUdjNVRUbU1ULTczQXZWR0hBQS14SkdFRWJ0MTRlX1lpRWZVNTdPVG9HMC1B?oc=5' target='_blank'>【10:00 即時新聞】智伸科(4551)亮燈漲停至265元，AI液冷＋半導體零組件題材發酵、短中期多方結構延續 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Fri, 03 Jul 2026 02:01:25 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMi2gNBVV95cUxNV0g5RVZJNGxybkNCaEtTNTl1ZTlVV19wR3FMY2dqZFJ5bHI4ZGc3czRFNjBodU5YV25zMGJ1dlhSdXNTcHFfZEN1WVh6bGU5TTd0RWRZVmF0SWs3aHRVX2MxT1J4LXppbVF0WkFOaW5rWXNWRlNyZVVJREZOY251WnlaZ1FoOXBVcmRial9NMXNna184MXdscTQwLXRFanNNU0UySGtXVGMtQThQOTJsOGhLLUJWRDdTQkx0dTRoS1VONVNRa2RaU01PdmlRa1NuaTlQX3pnTi1Fem02OXQ3YkRPTVNsVmZHRkRpWkJnZW9SNE5rWjdzbzdUbThkVy1jSGVQN3M4WmhKSHg2SF9jWURybXQtcjJYMzV0d3VJaUJSal9QTFlEdlhsVklZMUthak5lZlpMcFFEeDdnZnl5SGpra1gwbl91ekhVWXAyVVNDLVZ4UEFLRnhPU3B4dkZSZjRsQXJ4aVRYclJMX0c5MmpCbmIxekJ3YnV0dVpEdk1SMFM4TmN1bHR5c2dlOGhUS212RTF1ZHFvT2JpQWpZRVp5RGJTYWZ5UmtvMkdQTG1ad2RSUHlyZWdCd0R3a0FxTzBfMTlLUWwxWWtqWXFITmV5ZXRzVUNtcmc?oc=5' target='_blank'>法人目標價快破了！「這檔」連噴4根近6年最高價 切入AI伺服器散熱、半導體供應鏈 - Yahoo股市</a><br><span class='news-meta'>Yahoo股市｜Tue, 16 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMikgFBVV95cUxNRkthbVZKNTZXOTRFVWpvQU41b0dEWTlDOGZkdnpQRmxBbHhid05TSW9ya1FmVUVrSnRSNElZR01OR3VYd2lmV0R3bkQ2ZkNsYmNndWkwOVUya3oyMmFGWFY5MlpZN3dmS0FGSkJ1Z2xpYTFwNFdMSm1TQjNETGFoeGdHRXgwVW1uN0Y2eFc3aFVLQQ?oc=5' target='_blank'>智伸科下半年營收動能增，全年獲利拚逾一股本- 新聞 - MoneyDJ</a><br><span class='news-meta'>MoneyDJ｜Fri, 12 Jun 2026 07:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMidkFVX3lxTE5TNzNrWHdRNndIcmZEVWtacmt1WmphVlhFNDJ3UU51Z29WNnBiN0J5NW9XZUVCYWxXNTBQeGdnNnNtejM5MHJQM21YMG51YXNHclNXMEFDUmFfY1B6Z0s4bTJLWXhET0QtbmpEeTREbG5LaHI1d0E?oc=5' target='_blank'>Factset 最新調查：智伸科(4551-TW)EPS預估上修至11.05元，預估目標價為222.5元｜新聞快訊｜豐雲學堂 - sinotrade.com.tw</a><br><span class='news-meta'>sinotrade.com.tw｜Sun, 28 Jun 2026 19:11:00 GMT</span></li></ul>
+<h3>百達-KY(2236) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxPb3d6cG9FSjM2VV8tY00taW40dmxWcDB6Ukl0SmRwMEtCWkJDVXlLd0dEeUxvTndiMmxQeWxvZ2NGOXFxYnpFdG1IMTcyeXVVTzFqSlVlWkxyZm9WSmFTS2h6TzB1dmVobzBpZ3FLNElnbUJULVlGbXJqcURFZG1XaF9wWk1FcTNEUW10dm53?oc=5' target='_blank'>【11:53 即時新聞】百達-KY(2236)亮燈漲停184元，連三月營收強勢創高＋股價偏離均線短線多空拉鋸 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Fri, 03 Jul 2026 03:53:59 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZ0FVX3lxTE92dGhFZmRBMnRMM01oNXBTbjdBN3ltWjhnZ1h3Qjc5bE52QzEteHBVSnhWLUp0MWxCZDBwOWNqY2xfcXpRV2FzS0F1OFhMNTB3SmE4dFMtamxNY0VfNFNhd0hrdFhRcGc?oc=5' target='_blank'>【11:53 即時新聞】百達-KY(2236)亮燈漲停184元，連三月營收強勢創高＋股價偏離均線短線多空拉鋸 - CMoney</a><br><span class='news-meta'>CMoney｜Fri, 03 Jul 2026 03:53:59 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTE1ES1hnLVJkTjdYRFdaQV9yNXpCZDg0eHRqYUxTMnpqTVh2NXJ3Z3psVHBTZEoxbTBEbEtXeWlrTi1qYmpmdy1PamotTGYwRHhRQ3ZtWGN5RGNjZ0xpaEZ1NWxiZ0g?oc=5' target='_blank'>討論牆 | 盤中速報 - 百達-KY(2236)大漲7.17%，報157元 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Thu, 02 Jul 2026 21:15:11 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxQNnhPeEMzWjdUVEVZdDhYeS0tYVA1OEJyMklnUGc5cVB2c2tsMTl4bVZVOW0xcTlpU1hYNTBWMHhieFhET3lYNXBaZllYbHk0WTQyblctaXhHUDZBNl9STUdSZ2pVckVTSE94MmVScFEyTHZXaEQ5dWVsV1ZQekhvcDd5cEdibFAyOTduM293?oc=5' target='_blank'>【13:00 即時新聞】百達-KY(2236)股價勁揚至157.5元、漲幅7.51%，車用零組件＋機器人題材帶動買盤，技術面多頭排列搭配主力成本站上支撐 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Wed, 01 Jul 2026 05:00:58 GMT</span></li></ul>
+<h3>聯嘉投控(3717) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMi1ANBVV95cUxQeFl4dnViZmlHT2FBdWw1TW4wTF9abmpNNmNNckkzeGdtRTM1LUpmanJFOHJaeFNTd0F4RmJ4SGVpak5teWxXQjl0S2tRd0pxNWV2TE5XTWVlT2RPeGNiQ09GZUt1UFdQaXBLdlpRRUtEb3VJUXhHMFRmYUI0QVg3dWVrWG45RFRLUS0xTllQelFzbFYtLV9ReVIyOUswMTh0ejZFQm52RGJvTTZfb2dGUkJ0XzktWWNWaGxGcUpLTGZOOGFtYXg3bFhiWmJSdG1pYUFnTElmNUFOQUpCdmcyaFhhNHpTVERlVGNzeW5RRTRjWEFXVmI1c01xUEVyUW9VMXhXcDBWLVluT19zcWJSTFFZUUtTMUdkb3BiOHNJWTFKRnQ5V25vWVFjVHJfbktwekVxSHdET2drV0E4cWJSa3d6NUppQ01sejRJRjRJY3BadjBHT0Nra2N1NGlqUF9iUkdKWmJ2ODR0VzJQUC15NG1SRFhhWVgwRGFMWFgwWE56UXpYZEFvQl9yNnNseDBQcVpLNWxoQllVNGpsU0IxU1RuMUtnREYtdnFwNWhIaUFGc3Byak5lVnVEZTJaNFo3Y180UWZhRnpoR2YyaVdreVEtNEQ?oc=5' target='_blank'>聯嘉(3717)、凱美(2375)技術籌碼雙優怎麼看？｜大戶投策略選股｜多頭排列大戶買｜豐雲學堂2026 年 07 月 - sinotrade.com.tw</a><br><span class='news-meta'>sinotrade.com.tw｜Wed, 01 Jul 2026 03:44:55 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWkFVX3lxTFBVZDZ1RXJSVHNDWWdxRnNPX2dNaTUwU0ZRZUtETkxaWk9kbC1tUUFINzA0RFVHdjEybm5NWFpqdi00X184RE16UHlqZ0YzbmhxRmNBckM2dFlMZ9IBX0FVX3lxTE0tbzFfbUgwOTJjZW9SVjlBRnZvcHBjRHZBX29Da1dJbU4yZVJoWTE3MEJ1Tko5MEdPeFpCQzJyM2NvTFkyUlZkdnpvWWpXQzRYSXp0NkU0azRBTUg5eFFF?oc=5' target='_blank'>金寶、聯嘉法說談營運 - 經濟日報</a><br><span class='news-meta'>經濟日報｜Fri, 03 Jul 2026 09:00:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMikgFBVV95cUxQdExzMFp2bmV2SVc0ZmJ4NG5kTDFMS3ZRcmQybDNsYVJ6WkROVW8xWDREQmw0Q1M1dlRvckNvcE5vWVFYSUhSQW9uUUNrdlY0NEFTOXRsdExiTjBWMWFteXpQMFU5RmRQWDBscUk4WHhSN2toOFplQ2VIYi1GYTFQWGQyRWdnSFVySVJSNjRPdXd4UQ?oc=5' target='_blank'>聯嘉投控今年營運看增；明日法說分享新業務布局- 新聞 - MoneyDJ</a><br><span class='news-meta'>MoneyDJ｜Mon, 29 Jun 2026 04:03:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE9fdS1aSHNMUWVfbFdPUTlZUW9wTWNWYmF4SXAxVVZ0Q3RrNnNxUjRheW9NSkk1TWRPYjV0cjlfb29SNmVmSmdnVUZURkZkb0VPbTd1NUVmT2Y?oc=5' target='_blank'>3717 聯嘉投控- 看看參考- 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Thu, 02 Jul 2026 09:23:15 GMT</span></li></ul>
+<h3>為升(2231) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxQaFFWWlIzLUh6bUlMcXJQWUY0eElIMzNsbzlTSHBYVUJHVFlaZmtLTzVVX1hEc2k3WjRfWDdUM2c3a1pvNkZqbzY2am1FaXplc01QSGNZMUkxTVlJb2I2Y3lmUGZMWmFubmMwVXJ0TmxSeUpCc2ExdXkzbXJzNWZzcU9JVlJ5OUpsaUZtOFlB?oc=5' target='_blank'>【10:38 即時新聞】為升(2231)亮燈漲停，國防無人載具預算題材延燒＋短中期技術面多頭結構成形 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Fri, 03 Jul 2026 02:38:55 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE1sTlBUT0YydGhQYm16U29UNG9jYVItTVl1QzhoTzlpZElKNTZObVZOZEh3ai1TR0owU1QtMXExNEpwMzZUWjlieURqNEJnUF9BTkdnaE5EVmc?oc=5' target='_blank'>焦點股》為升：無人機反制系統助攻 連飆2根漲停 - 自由時報</a><br><span class='news-meta'>自由時報｜Wed, 24 Jun 2026 05:44:54 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTE9vLWJKNm5jMUpIUnJWcXh1YUNuWFVLcUdfazRid255dEpUVVI5QkJrdXliMFktaEpobnFIZU5RVFZ3UmpYOFlqaXJRQ1lvRDNZeW9KTkhzLVlEVzRFanQxWllSWVY?oc=5' target='_blank'>討論牆 | 盤中速報 - 為升(2231)大漲7.73%，報118.5元 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Fri, 03 Jul 2026 21:18:44 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxPaWhSVFRMT0hra2lDX1FhaEkzblgtVng1WkNGMEYtMUJWeWlkQmxDUGp0OVZndlVMWDRDTkhzZFdMX1R6X1I0ZFdLamhyV2wwLXhmanRaRFZzUzJoeVh3cFZ0MnpuSTY4VER3V2cySXUyUjl2MUo3TlhWRlEtVU90bjdPZ0tTd3p5bUNvYmFB?oc=5' target='_blank'>【13:10 即時新聞】為升(2231)股價上漲逾8%，無人機國防自主題材延燒＋短線技術多頭結構強化 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Wed, 01 Jul 2026 05:11:07 GMT</span></li></ul>
 <h2>【航運業】內部領漲個股</h2>
 <table border="1" class="dataframe">
   <thead>
@@ -1054,8 +1364,9 @@
       <th>股票代號</th>
       <th>股票名稱</th>
       <th>目前股價</th>
-      <th>當日成交量(張)</th>
-      <th>5日均量(張)</th>
+      <th>當日成交量(千張)</th>
+      <th>5日均量(千張)</th>
+      <th>成交量變化(%)</th>
       <th>當日漲幅(%)</th>
       <th>近5日報酬(%)</th>
       <th>近20日報酬(%)</th>
@@ -1065,6 +1376,9 @@
       <th>本月營收年增率(%)</th>
       <th>上月營收年增率(%)</th>
       <th>營收資料月份</th>
+      <th>本季毛利率(%)</th>
+      <th>上季毛利率(%)</th>
+      <th>毛利率資料季度</th>
     </tr>
   </thead>
   <tbody>
@@ -1072,8 +1386,9 @@
       <td>2630</td>
       <td>亞航</td>
       <td>55.80</td>
-      <td>17354.0</td>
-      <td>16281.0</td>
+      <td>17.35</td>
+      <td>16.28</td>
+      <td>6.57</td>
       <td>0.0</td>
       <td>14.23</td>
       <td>40.38</td>
@@ -1083,13 +1398,17 @@
       <td>-29.25</td>
       <td>-22.88</td>
       <td>2026/05</td>
+      <td>9.11</td>
+      <td>8.38</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>2634</td>
       <td>漢翔</td>
       <td>60.00</td>
-      <td>45980.0</td>
-      <td>44136.0</td>
+      <td>45.98</td>
+      <td>44.14</td>
+      <td>4.17</td>
       <td>0.0</td>
       <td>6.01</td>
       <td>33.33</td>
@@ -1099,13 +1418,17 @@
       <td>18.86</td>
       <td>12.26</td>
       <td>2026/05</td>
+      <td>7.80</td>
+      <td>8.73</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>2645</td>
       <td>長榮航太</td>
       <td>216.50</td>
-      <td>7042.0</td>
-      <td>7856.0</td>
+      <td>7.04</td>
+      <td>7.86</td>
+      <td>-10.43</td>
       <td>0.0</td>
       <td>16.71</td>
       <td>30.42</td>
@@ -1115,13 +1438,17 @@
       <td>10.64</td>
       <td>11.75</td>
       <td>2026/05</td>
+      <td>27.54</td>
+      <td>14.11</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>6753</td>
       <td>龍德造船</td>
       <td>154.00</td>
-      <td>4997.0</td>
-      <td>5349.0</td>
+      <td>5.00</td>
+      <td>5.35</td>
+      <td>-6.54</td>
       <td>0.0</td>
       <td>12.82</td>
       <td>28.33</td>
@@ -1131,13 +1458,17 @@
       <td>26.91</td>
       <td>49.52</td>
       <td>2026/05</td>
+      <td>33.10</td>
+      <td>20.29</td>
+      <td>2026-03-31</td>
     </tr>
     <tr>
       <td>2618</td>
       <td>長榮航</td>
       <td>43.85</td>
-      <td>39037.0</td>
-      <td>41294.0</td>
+      <td>39.04</td>
+      <td>41.29</td>
+      <td>-5.45</td>
       <td>0.0</td>
       <td>-2.34</td>
       <td>20.47</td>
@@ -1147,8 +1478,21 @@
       <td>22.11</td>
       <td>18.89</td>
       <td>2026/05</td>
+      <td>26.22</td>
+      <td>22.90</td>
+      <td>2026-03-31</td>
     </tr>
   </tbody>
 </table>
-<p class="note">資料來源：台灣證交所開放資料、FinMind、Yahoo Finance。僅供研究參考，不構成投資建議。</p>
+<h3>亞航(2630) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE1nc1FVMzVSYzRKaFFkRjlvZGNtQlU2dGJDb2FmUE8wVnk4V2JsR3JpVmhjejdQektYVVRnd042WDk3QWp5aHpiQjA0MkQ2Q21FLU9rMmIwZ20?oc=5' target='_blank'>【11:46 即時新聞】亞航(2630)亮燈漲停55.8元，國防無人機題材持續發酵＋短線突破關鍵價位吸引買盤卡位 - CMoney</a><br><span class='news-meta'>CMoney｜Fri, 03 Jul 2026 03:47:29 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxPWjNPUUVoSUJLdW5fX1UtQUFOelN0QzQ2eDE2cUdpeDhvLVFkME5YNmVHdlpYSDBpVlRuSm00MzZUVjFjZ1pRMTVFSDNDa0tOQmhOeGZVb2dIN1B0RVJKUVZWamc4bjdlcEpxdXFhZHRxY0lMbUFpYkwyZWM0SzFpZmRZdmRWRVl4SjgtSUd3?oc=5' target='_blank'>【11:46 即時新聞】亞航(2630)亮燈漲停55.8元，國防無人機題材持續發酵＋短線突破關鍵價位吸引買盤卡位 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Fri, 03 Jul 2026 03:47:05 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMi9wRBVV95cUxPQlpfemc4T2NaVVhnd3BycmFpb1BRWXZnYW9ZalVZTXRTR3JaM0FrSmMzdG5EQ1pQREZkSG9tSEtXeVpDODA2UUJFc2hEMHZ6M0M5bkh5U3hhQnkwWENoQm9Ydmt4WFc0eVE3MmpVRDVVSnI5RUhRVzg3TkhTS01UQjZXSXh2WjRsamFPUElSc2MxaUN0bXRRcURRVk9Wc3dNdmhiMTN2RC1KWWY5Q191SkFHY3hmdFRwd3dsenRNSGRHYXptaVo5THpKa09TallRNjhwVlltemc2UG5qdFpRLXlhdU1ZNXZ3eGhST3hybWtWR0JzZ3hTclZLU2EtcWZYaFBwYm45NjktSXQyNEhHUkpYWGdwcTdKM2JZaHdLa3NEbk55cjZMQkJzTjJBRVg2cHpWenhfLVdkX3g1dzZiWTR1VHpOaXc0c2N4XzNkQ0dTazFkOENybjNrRGxNdERzRUwwbGxIdU5rV0dYVzZ5THdyMGcxb3RUR0plWl9lUS1kRjhTYmRRSmNsSElGMFVmaUhQYUhCZDJJc0pFLUg4SHF0S1dfcGJuWF95Zi1FZmQ3bnNYNWdyLVZ4b3dLZEVVQklCWXlnRUtzd3JwT2poZmFGYVJWTzRVZTUtaXpscUVSbUNXaUVfQjJTSEdCV0lNalhDcHBoeEhnLWVwdDVsQUVTVHRiNnFrNWVvREZtNFFMZW9yWFlNaUhIbS1hOFlIRGM5OHdnbFR1S2s0TWRqV0o0UVN0V3VtRFlqOW1EMXB0dmZidHBtcGNmdXM3OWZpamkyWGs1TTlDMVI1aEVGY0dlcWdLcEs2blhCV0JzM2lyYWQzdWl3?oc=5' target='_blank'>無人機條例朝野版本齊發，預算上看2,400億元，台股軍工族群雷虎、中光電、漢翔、亞航等全面引爆｜股市話題 - sinotrade.com.tw</a><br><span class='news-meta'>sinotrade.com.tw｜Tue, 30 Jun 2026 03:07:21 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTE96T004VnMzS1VfVkxuQndPeVVScFBiak1HclVnRVdzZHR0bm5KREl0OGVkdlcyeXEtTDkzLVlWcE1RVDlFVzNxQVZkb0RqYkpZT2NWdVlyM1BOWGp3VmpaYzNodzk?oc=5' target='_blank'>討論牆 | 盤中速報 - 亞航(2630)股價拉至漲停，漲停價55.8元，成交15,548張 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Fri, 03 Jul 2026 06:24:24 GMT</span></li></ul>
+<h3>漢翔(2634) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxOSFo3R0hzcFhoeGpWMTQwTEFxR0phV1BseVpYUjJPSjB6bjRvTzZaUXZWc2Z4TElBblgtOFFwWXBsSWMxbUNHamxXOGxBdnFLaW5fOE1TQ050ZkRVWDZyQWlKOURSa3l1TS1icE9BNXVtZzdyc2FjWndjcDljM29EWXdGMXRpOVNCa3VlWUhB?oc=5' target='_blank'>【11:12 即時新聞】漢翔(2634)亮燈漲停至60元，無人機國防預算題材延燒＋均線多頭與法人買盤支撐續強格局 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Fri, 03 Jul 2026 03:13:07 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE9pQXZ6QjFWbENCeEtsU0RobUpqNGhSSFVQS3ptYm5ZVEVqd2Z3blNjTGhhYTlud09ITVFFRG1tSE96Uks5ZloxdV9iU0dvTHpQdkhhN2Vvd0I?oc=5' target='_blank'>2634 漢翔- 3,156億國艦大單點火，摩根52塊已在漢翔布局- 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Fri, 03 Jul 2026 06:31:49 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMigAFBVV95cUxNSl9LT0N0dDY4V3FleEttRlFjb3Q4VFhxbHl5LTRTd0YwZmZrRHRVSTBZVGlCbEsyY1pFWktMV21WSUpRT0JGVExocDQ1RC16SFJLckxQVnhDZkJSTUNVd19ydG5STWN5eDJJVVdZUUptX2ZYbl9fM0pRUXRMSnVRQw?oc=5' target='_blank'>漢翔、中光電、龍德造船…軍工股無人機概念股集體漲停能追？法人看好這2檔指標股：吃美軍大單 - 今周刊</a><br><span class='news-meta'>今周刊｜Fri, 03 Jul 2026 03:49:11 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiakFVX3lxTE5YXy1qeGtDNWNld1R0Y3RheFQ1alZnRk5JSGxDbUtsV0V5bXFNc2VyaFZERUY3eGgxWnNYWi1maGxfbVZMRjFQWEYwNHNIQTdZOWZENkgxR3JSTWYzeTRGenA5eTVVcGlvaFE?oc=5' target='_blank'>中光電、雷虎、長榮航太、漢翔...無人機股全線漲停誰能追？龍頭、官股法人都推他：目標價上看250元 - 上市櫃 - 旺得富理財網</a><br><span class='news-meta'>旺得富理財網｜Sat, 04 Jul 2026 21:34:50 GMT</span></li></ul>
+<h3>長榮航太(2645) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiW0FVX3lxTE1ta3VaWnBfdEd0eUNfYVNZbVh5Q2NnOXdySnR1VlRnSFBVOUZBalgxTnU2UHZ1dGRYcFhlb1BscVBXU0ExUFZRRlZvUkc4WHB6OTEtZGtmOGRkU00?oc=5' target='_blank'>打破無人機市場碎片化！長榮航太挾 AS9100 航太品保與全球 MRO 規模，強勢收割軍工『大量、長單』核心溢價 - 富果直送</a><br><span class='news-meta'>富果直送｜Wed, 01 Jul 2026 02:27:54 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiakFVX3lxTE5YXy1qeGtDNWNld1R0Y3RheFQ1alZnRk5JSGxDbUtsV0V5bXFNc2VyaFZERUY3eGgxWnNYWi1maGxfbVZMRjFQWEYwNHNIQTdZOWZENkgxR3JSTWYzeTRGenA5eTVVcGlvaFE?oc=5' target='_blank'>中光電、雷虎、長榮航太、漢翔...無人機股全線漲停誰能追？龍頭、官股法人都推他：目標價上看250元 - 上市櫃 - 旺得富理財網</a><br><span class='news-meta'>旺得富理財網｜Sat, 04 Jul 2026 21:34:50 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxPb1V2bzhQajBiUzM5X21CYW9EdDEtMlhtWEVPTk0yRmdSTTRTTmJyelEwY29yd2hGOXBhTVBrRWNYN21ad0RnekhHdVBrNm1QWG0yMDIxOEUzTDh0T2lYZFNzY1N5OTlvLW9BdVJHcUJhSklKMmpJTU83M1R4QmRleG84MnpRM2tiS0Mtc3VB?oc=5' target='_blank'>【09:37 即時新聞】長榮航太(2645)亮燈漲停至204元，無人機國防預算題材加持＋法人與主力同步偏多推升短線動能 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Wed, 01 Jul 2026 01:37:49 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMikgFBVV95cUxPN24tSkZCSXRhQzVWUWFiY3dxSHRPdVJ2NjRzVEtiaWwxNk1VdGFVMTVYbVU0RTc5MnctOFYzR3ZZZ2RZV1ZFVVA0eFJVQWNySXh1d0w5aGVwR0lsaGJWTXFRRGJhQW12dkdRS1hJX1VpajFFX3lhLTBHZHVJbFdrd1F6dV83eVRJWG9ucFFXcVJJZw?oc=5' target='_blank'>航空客運需求增，長榮航太維修展望正面- 新聞 - MoneyDJ</a><br><span class='news-meta'>MoneyDJ｜Thu, 18 Jun 2026 07:00:00 GMT</span></li></ul>
+<h3>龍德造船(6753) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMiX0FVX3lxTE9JblNBcC1GbnNPSndCdVJCZU5jOTVsRHBvaWZFS3BnQkZLQmg5aFNqU0ozcGN6WDU1cG1XYVFwQUs5NWhHbEdLTFZOajI3NlNqdFhXUS1fbi1zV2xKRTN30gFkQVVfeXFMTzItc0NWMGx0c0JZdFJ5QWZyOElRa0NzMjUyaTJXSThETnd6QTN1QklQaTV0clFJM3hmcnp5MmJzdlZ0MjlPRFFZZURzcVJJYjgzNUoteGVjbXVOa0Fjcl9wZGVLUQ?oc=5' target='_blank'>焦點股》龍德造船：無人載具採購特別條例將審議 股價奔漲停 - 自由財經</a><br><span class='news-meta'>自由財經｜Fri, 03 Jul 2026 02:05:31 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTE9QTFFaSTFtbzlxdHU3TnVaNllwRUszTXg0YmRic1VYanlXUkdkTGhrSE1CTW1YaGNEWTdyWWd3UzRKNzZJaWlOdWZFM2tWUVF0VENVcUk0V1JXaXNSUlhQQTd4Uy0?oc=5' target='_blank'>討論牆 | 盤中速報 - 龍德造船(6753)大漲7.14%，報150元 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Sat, 04 Jul 2026 13:03:55 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMijgFBVV95cUxQbTlQeTdZeDEyT2JFaGtaQmVLSGx1X2pWeWczNG5FMEc0c2N4UUx4Y1l1eHFLbG9wbjg4WWowOUtFVnVfbjFaTlBRcl8wS2M5OHdYa2tPaDdzYVM0TVlYWGdqTU15azlrYjlpT0tFeThjVm1PNzR5NUlFLU53WDNXdU9fU3hhQzZ0c3JIelJ3?oc=5' target='_blank'>【09:16 即時新聞】龍德造船(6753)亮燈漲停154元，軍工造艦訂單題材發酵＋主力與法人同步偏多推升價量結構 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Fri, 03 Jul 2026 01:16:21 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE9qWkZiNVh4VnFKbXJfSmFlR3hXc2YzNm9JZW5MZ0JvdENub0Z4Nk1fRFpiYUNSQ1p4aTZLdmRlLURtTl9MNW9oMkwtXzZLeEtNSDVWa3g5XzU?oc=5' target='_blank'>龍德造船2026年交20艘船目標 - CMoney</a><br><span class='news-meta'>CMoney｜Fri, 12 Jun 2026 23:27:13 GMT</span></li></ul>
+<h3>長榮航(2618) 相關新聞</h3>
+<ul class='news-list'><li><a href='https://news.google.com/rss/articles/CBMidkFVX3lxTFBveEdmYTVXVzUzYmFFcVd3clJ2Q2F3bHNRZmlPVUdueloydjYtVGVXV09FSWdFQUZsMmNqNF9ud3FXS0VONThYZlQ4RjdrZkkzMUZKM2c1NjZsZ3VYX0FoUGdsSFFmZG5BZk1FS2RnTUxsbkpFYmc?oc=5' target='_blank'>Factset 最新調查：長榮航(2618-TW)EPS預估上修至4.05元，預估目標價為42元｜新聞快訊｜豐雲學堂 - sinotrade.com.tw</a><br><span class='news-meta'>sinotrade.com.tw｜Thu, 02 Jul 2026 09:10:00 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiZEFVX3lxTFAxZWpha1dtbkxfREREMnFDY2FwY0dxZWw0eXoyWmZJdGh1M1p2b3U5MnlfY1RLMmVqdkdJZGNCYzNwN2dIWm5rTkh6SGt2VEEzdHF2TWxaUTcyS1h1RWRwbVI3MWo?oc=5' target='_blank'>討論牆| 鉅亨速報- Factset 最新調查：長榮航(2618-TW)EPS預估上修至4.05元，預估目標價為42元 - LINE TODAY</a><br><span class='news-meta'>LINE TODAY｜Sat, 04 Jul 2026 20:08:04 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMihgFBVV95cUxOUTZaX01qMmJOX0dCbllvRmZJWEFMYnpNUmZQdk5zQjZWRUpYVmR0Uk1VbG5tWURzekcxTHBQZFRQb2FsWUM1RWRJMnF4UGpGd05sc281UTh1WHdLR1pTeXM5ejZhd1FUaUw4ODltYnZhWi1ZVkVQazg0RXJFaE5HQ09ISk5mQQ?oc=5' target='_blank'>油價再降0.6元，長榮航 (2618) 成本壓力有感減輕？2個數字先看懂-梁文謙 - CMoney投資網誌</a><br><span class='news-meta'>CMoney投資網誌｜Sat, 04 Jul 2026 09:24:57 GMT</span></li><li><a href='https://news.google.com/rss/articles/CBMiWEFVX3lxTE05dE5yMHVDQlpyaFFhRWZESWVJNlNkb2hGdGJKSUo3azBkaVFjZ0lmYU00Z2pwNHh3R3F0d2h6MDI1a0pzdG41S2YzUW9qcnZsbUxjZk9URDQ?oc=5' target='_blank'>2618 長榮航 - 本來要掛44.2賣 好險網路不好 ... - 股市爆料同學會 - CMoney</a><br><span class='news-meta'>CMoney｜Tue, 30 Jun 2026 03:10:56 GMT</span></li></ul>
+<p class="note">資料來源：台灣證交所開放資料、FinMind、Yahoo Finance、Google News。僅供研究參考，不構成投資建議。</p>
 </body></html>
